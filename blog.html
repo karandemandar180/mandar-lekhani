@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>लेख आणि ब्लॉग | मंदार लेखणी</title>
+<meta name="description" content="मंदार लेखणीचे मराठी साहित्य, सायबर सुरक्षा, सायबर कायदा आणि डिजिटल फॉरेन्सिक्स विषयांवरील लेख.">
+<link rel="stylesheet" href="./style.css">
+<style>
+.blog-wrap{width:min(1100px,92%);margin:40px auto}
+.blog-head{text-align:center;margin:35px 0}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.post-card{border:1px solid #e2eaf3;border-radius:14px;padding:22px;background:#fff}
+.post-card h2{font-size:21px;margin:10px 0;color:#071a35}
+.post-meta{font-size:13px;color:#667085}
+.post-card p{color:#526174;margin:12px 0}
+.read-link{display:inline-block;margin-top:10px;padding:10px 16px;background:#0b5cab;color:white;border-radius:7px}
+.blog-error{padding:18px;background:#fff4e5;border-radius:8px}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="./index.html">
+      <div>मंदार लेखणी<span>शब्दांतून मनाचा प्रवास...</span></div>
+    </a>
+    <nav>
+      <a href="./index.html">मुख्यपृष्ठ</a>
+      <a href="./index.html#books">पुस्तके</a>
+      <a href="./blog.html">ब्लॉग</a>
+      <a href="./index.html#contact">संपर्क</a>
+    </nav>
+  </div>
+</header>
+
+<main class="blog-wrap">
+  <div class="blog-head">
+    <h1>लेख आणि ब्लॉग</h1>
+    <p>मराठी साहित्य • Cyber Security • Cyber Law • Digital Forensics</p>
+  </div>
+  <div id="posts-list" class="blog-grid">
+    <p>लेख लोड होत आहेत...</p>
+  </div>
+  <p style="margin-top:35px">
+    <a href="./index.html">← मुख्य वेबसाइटवर परत जा</a>
+  </p>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> मंदार लेखणी | लेखक: मंदार कारंडे</p>
+  </div>
+</footer>
+<script src="./blog.js"></script>
+</body>
+</html>
