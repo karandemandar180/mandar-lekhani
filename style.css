@@ -1,0 +1,287 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Noto Sans Devanagari', Arial, sans-serif;
+    background: #f7f4ed;
+    color: #292820;
+    line-height: 1.8;
+}
+
+/* HEADER */
+
+header {
+    background: #252b35;
+    color: white;
+    padding: 20px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo h2 {
+    color: #e7c58b;
+    font-size: 25px;
+}
+
+.logo span {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #ddd;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #e7c58b;
+}
+
+/* HOME */
+
+.hero {
+    min-height: 430px;
+    padding: 100px 8%;
+    text-align: center;
+    background: linear-gradient(135deg, #29394d, #66533e);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: 42px;
+    color: #f1d7a7;
+    margin-bottom: 15px;
+}
+
+.hero h2 {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    background: #e7c58b;
+    color: #252b35;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: white;
+    transform: translateY(-3px);
+}
+
+/* COMMON SECTIONS */
+
+section:not(.hero) {
+    padding: 65px 9%;
+}
+
+section h2 {
+    color: #34465b;
+    font-size: 29px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+section p {
+    font-size: 15px;
+    color: #625f58;
+}
+
+/* ABOUT */
+
+#about {
+    background: #fffdf8;
+    text-align: center;
+}
+
+#about h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+/* BOOKS */
+
+#books {
+    background: #eee8dc;
+    text-align: center;
+}
+
+.book {
+    display: inline-block;
+    vertical-align: top;
+    background: white;
+    width: 29%;
+    min-width: 220px;
+    padding: 25px 18px;
+    margin: 12px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px #00000012;
+    transition: 0.3s;
+}
+
+.book:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 22px #00000020;
+}
+
+.book h3 {
+    color: #34465b;
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+.book p {
+    margin-bottom: 18px;
+    font-size: 13px;
+}
+
+.book a {
+    display: inline-block;
+    background: #34465b;
+    color: white;
+    padding: 9px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.book a:hover {
+    background: #a47b43;
+}
+
+/* LITERATURE */
+
+#literature {
+    background: #fffdf8;
+    text-align: center;
+}
+
+/* CYBERSECURITY */
+
+#cyber {
+    background: #e8edf2;
+    text-align: center;
+}
+
+/* BLOG */
+
+#blog {
+    background: #f7f4ed;
+    text-align: center;
+}
+
+/* CONTACT */
+
+#contact {
+    background: #29394d;
+    color: white;
+    text-align: center;
+}
+
+#contact h2 {
+    color: #f1d7a7;
+}
+
+#contact p {
+    color: white;
+    margin-bottom: 15px;
+}
+
+#contact a {
+    color: #f1d7a7;
+    text-decoration: none;
+}
+
+/* FOOTER */
+
+footer {
+    background: #1d232c;
+    color: white;
+    text-align: center;
+    padding: 25px 10px;
+}
+
+footer h3 {
+    color: #e7c58b;
+    margin-bottom: 8px;
+}
+
+footer p {
+    font-size: 12px;
+    color: #ddd;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .hero {
+        padding: 75px 6%;
+        min-height: 350px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .hero h2 {
+        font-size: 21px;
+    }
+
+    section:not(.hero) {
+        padding: 45px 6%;
+    }
+
+    section h2 {
+        font-size: 24px;
+    }
+
+    .book {
+        display: block;
+        width: 100%;
+        margin: 15px 0;
+    }
+}
