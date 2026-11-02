@@ -1,8 +1,8 @@
 
 /* ==========================================
    MANDAR LEKHANI OFFICIAL WEBSITE
-   COMPLETE PREMIUM DARK NAVY + GOLD THEME
-   Old + New CSS Integrated
+   PREMIUM DARK NAVY + GOLD THEME
+   OLD + NEW CSS + ADMIN LOGIN
    ========================================== */
 
 :root {
@@ -686,6 +686,31 @@ img {
 
 .footer-links a:hover {
   color: var(--white);
+}
+
+/* ADMIN LOGIN LINK */
+
+.admin-link {
+  text-align: center;
+  margin: 18px 0;
+}
+
+.admin-link a {
+  display: inline-block;
+  color: var(--gold-light);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+  border: 1px solid var(--gold);
+  padding: 8px 20px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.admin-link a:hover {
+  background: var(--gold);
+  color: var(--navy);
+  box-shadow: 0 4px 15px rgba(229, 189, 98, 0.25);
 }
 
 /* FLOATING WHATSAPP */
