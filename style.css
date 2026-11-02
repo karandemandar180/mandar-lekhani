@@ -1,491 +1,347 @@
 
-/* =====================================
-   MANDAR LEKHANI - PROFESSIONAL WEBSITE
-   Author: Mandar Karande
-   Theme: Navy Blue & Golden
-===================================== */
-
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@400;600;700&display=swap');
-
-/* GLOBAL */
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 100px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
 }
 
 body {
-    font-family: 'Noto Sans Devanagari', Arial, sans-serif;
-    background: #f7f5ef;
-    color: #202b3c;
-    line-height: 1.8;
+  font-family: Arial, "Noto Sans Devanagari", sans-serif;
+  line-height: 1.7;
+  color: #263247;
+  background: #ffffff;
 }
 
-a {
-    transition: 0.3s ease;
+.container {
+  width: min(1100px, 92%);
+  margin: auto;
 }
 
-/* HEADER */
-
-header {
-    width: 100%;
-    min-height: 90px;
-    padding: 12px 6%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    background: #071a35;
-    border-bottom: 2px solid #d9aa42;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 4px 15px #00000025;
+.header {
+  background: #071a35;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.15);
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-shrink: 0;
+.header-inner {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  white-space: nowrap;
 }
 
 .site-logo {
-    width: 65px;
-    height: 65px;
-    object-fit: contain;
-    border-radius: 8px;
-    background: #071a35;
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  border-radius: 50%;
 }
 
-.logo h2 {
-    color: #f5ce70;
-    font-family: 'Noto Serif Devanagari', serif;
-    font-size: 23px;
-    line-height: 1.4;
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
 }
 
-.logo span {
-    color: #ffffff;
-    font-size: 10px;
-    letter-spacing: 3px;
+.nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
 }
 
-/* NAVIGATION */
-
-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 18px;
+.nav a:hover {
+  color: #e7bd68;
 }
 
-nav a {
-    color: #ffffff;
-    font-size: 13px;
-    text-decoration: none;
-    font-weight: 500;
+.language-btn {
+  border: 1px solid #e7bd68;
+  background: transparent;
+  color: #e7bd68;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  white-space: nowrap;
 }
 
-nav a:hover {
-    color: #f5ce70;
+.language-btn:hover {
+  background: #e7bd68;
+  color: #071a35;
 }
-
-/* HOME / HERO */
 
 .hero {
-    min-height: 650px;
-    padding: 65px 8%;
-    background:
-        radial-gradient(circle at top, #173967 0%, transparent 55%),
-        linear-gradient(135deg, #06152c, #102d50);
+  background: linear-gradient(135deg, #071a35, #163b65);
+  color: white;
+  text-align: center;
+  padding: 65px 20px 75px;
+}
 
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border-bottom: 4px solid #d9aa42;
+.hero-content {
+  max-width: 800px;
 }
 
 .hero-logo {
-    width: 230px;
-    height: 230px;
-    object-fit: contain;
-    margin-bottom: 20px;
-    filter: drop-shadow(0 8px 18px #00000065);
-    border-radius: 10px;
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.eyebrow {
+  color: #e7bd68;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
 }
 
 .hero h1 {
-    color: #f5ce70;
-    font-family: 'Noto Serif Devanagari', serif;
-    font-size: clamp(30px, 5vw, 48px);
-    margin-bottom: 15px;
+  font-size: clamp(34px, 6vw, 54px);
+  margin-bottom: 8px;
 }
 
 .hero h2 {
-    color: #ffffff;
-    font-size: 24px;
-    margin-bottom: 12px;
+  color: #e7bd68;
+  font-size: clamp(20px, 3vw, 28px);
+  margin-bottom: 15px;
 }
 
 .hero p {
-    color: #e5e8ee;
-    font-size: 15px;
-    margin-bottom: 12px;
+  margin: 0 auto 25px;
+  max-width: 650px;
 }
 
-/* BUTTON */
-
-.btn {
-    display: inline-block;
-    margin-top: 22px;
-    padding: 12px 28px;
-    background: linear-gradient(135deg, #f5ce70, #d99a27);
-    color: #071a35;
-    text-decoration: none;
-    border-radius: 30px;
-    font-weight: 700;
-    box-shadow: 0 5px 15px #00000030;
+.primary-btn,
+.book-btn {
+  display: inline-block;
+  background: #d6a84f;
+  color: #071a35;
+  text-decoration: none;
+  padding: 11px 22px;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: 0.2s;
 }
 
-.btn:hover {
-    background: #ffffff;
-    transform: translateY(-3px);
+.primary-btn:hover,
+.book-btn:hover {
+  background: #f0cf85;
+  transform: translateY(-2px);
 }
 
-/* COMMON SECTION */
-
-section:not(.hero) {
-    padding: 75px 9%;
+.section {
+  padding: 65px 0;
 }
 
-section h2 {
-    text-align: center;
-    color: #0b2850;
-    font-family: 'Noto Serif Devanagari', serif;
-    font-size: clamp(25px, 3vw, 34px);
-    margin-bottom: 25px;
+.section-alt {
+  background: #f3f6fa;
 }
 
-section h3 {
-    color: #9b7025;
-    margin-bottom: 12px;
+.section h2 {
+  text-align: center;
+  color: #071a35;
+  font-size: 30px;
+  margin-bottom: 25px;
 }
 
-section p {
-    color: #555d68;
-    font-size: 15px;
-    margin-bottom: 15px;
+.section-intro {
+  text-align: center;
+  margin: -10px 0 30px;
 }
 
-/* ABOUT */
-
-#about {
-    background: #ffffff;
-    text-align: center;
-    border-bottom: 1px solid #e6d8b9;
+.about-card,
+.feature-card,
+.contact-card {
+  max-width: 850px;
+  margin: auto;
+  padding: 30px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 5px 22px rgba(0,0,0,0.07);
 }
 
-#about h3 {
-    font-size: 24px;
+.about-card h3 {
+  color: #163b65;
+  font-size: 24px;
+  margin-bottom: 12px;
 }
 
-/* BOOKS */
-
-#books {
-    background: #f0ebdf;
-    text-align: center;
+.about-card p,
+.feature-card p,
+.contact-card p {
+  margin-bottom: 14px;
 }
 
-#books > p {
-    text-align: center;
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 25px;
 }
 
-.book {
-    display: inline-block;
-    vertical-align: top;
-    width: 29%;
-    min-width: 220px;
-    min-height: 230px;
-    margin: 15px 1%;
-    padding: 30px 20px;
-    background: #ffffff;
-    border: 1px solid #e2d3b2;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px #071a3512;
-    transition: 0.3s ease;
+.book-card,
+.info-card {
+  background: white;
+  border-radius: 14px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 5px 22px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.book:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px #071a3525;
-    border-color: #d9aa42;
+.book-card h3,
+.info-card h3,
+.feature-card h3 {
+  color: #163b65;
+  margin-bottom: 12px;
 }
 
-.book h3 {
-    color: #0b2850;
-    font-size: 19px;
-    line-height: 1.6;
+.book-card p,
+.info-card p {
+  margin-bottom: 20px;
 }
 
-.book p {
-    font-size: 13px;
-    min-height: 55px;
+.book-symbol {
+  font-size: 38px;
+  margin-bottom: 12px;
 }
 
-.book a {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #071a35;
-    color: #f5ce70;
-    border-radius: 25px;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
+.book-btn {
+  margin-top: auto;
+  font-size: 14px;
 }
 
-.book a:hover {
-    background: #d9aa42;
-    color: #071a35;
+.text-link {
+  color: #163b65;
+  font-weight: bold;
 }
 
-/* MARATHI LITERATURE */
-
-#literature {
-    background: #ffffff;
-    text-align: center;
-    border-top: 1px solid #e8dfcf;
-    border-bottom: 1px solid #e8dfcf;
+.contact-card {
+  text-align: center;
 }
 
-#literature h3 {
-    font-family: 'Noto Serif Devanagari', serif;
-}
-
-/* CYBERSECURITY */
-
-#cyber {
-    background: linear-gradient(135deg, #e8edf4, #f7f5ef);
-    text-align: center;
-}
-
-#cyber h2 {
-    color: #071a35;
-}
-
-/* BLOG */
-
-#blog {
-    background: #f0ebdf;
-    text-align: center;
-}
-
-/* CONTACT */
-
-#contact {
-    background: #071a35;
-    text-align: center;
-    color: white;
-    border-top: 3px solid #d9aa42;
-}
-
-#contact h2 {
-    color: #f5ce70;
-}
-
-#contact p {
-    color: #e4e8ef;
-}
-
-#contact a {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 12px 24px;
-    background: #f5ce70;
-    color: #071a35;
-    text-decoration: none;
-    border-radius: 25px;
-    font-weight: 700;
-}
-
-#contact a:hover {
-    background: #ffffff;
-}
-
-/* FOOTER */
-
-footer {
-    background: #040f20;
-    color: #ffffff;
-    padding: 35px 15px;
-    text-align: center;
-    border-top: 2px solid #d9aa42;
+.footer {
+  background: #071a35;
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
 }
 
 .footer-logo {
-    width: 90px;
-    height: 90px;
-    object-fit: contain;
-    margin-bottom: 10px;
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  border-radius: 50%;
+  margin-bottom: 10px;
 }
 
-footer h3 {
-    color: #f5ce70;
-    font-family: 'Noto Serif Devanagari', serif;
-    font-size: 22px;
+.footer p {
+  margin: 5px 0;
 }
 
-footer p {
-    color: #d8dce3;
+@media (max-width: 850px) {
+  .header-inner {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav {
+    width: 100%;
+    order: 3;
+    gap: 10px 15px;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .header-inner {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .brand {
+    font-size: 17px;
+  }
+
+  .site-logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav {
+    order: 3;
+    padding: 8px 0;
+    gap: 8px 13px;
+  }
+
+  .nav a {
     font-size: 12px;
-    margin-top: 5px;
-}
+  }
 
-/* MOBILE RESPONSIVE */
+  .language-btn {
+    padding: 7px 11px;
+    font-size: 12px;
+  }
 
-@media screen and (max-width: 768px) {
+  .hero {
+    padding: 45px 15px 55px;
+  }
 
-    header {
-        flex-direction: column;
-        padding: 15px 4%;
-        gap: 12px;
-    }
+  .hero-logo {
+    width: 85px;
+    height: 85px;
+  }
 
-    .logo {
-        justify-content: center;
-    }
+  .section {
+    padding: 45px 0;
+  }
 
-    .site-logo {
-        width: 58px;
-        height: 58px;
-    }
+  .section h2 {
+    font-size: 25px;
+  }
 
-    .logo h2 {
-        font-size: 21px;
-    }
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
 
-    nav {
-        gap: 10px 15px;
-        justify-content: center;
-    }
+  .about-card,
+  .feature-card,
+  .contact-card,
+  .book-card,
+  .info-card {
+    padding: 22px;
+  }
 
-    nav a {
-        font-size: 12px;
-    }
-
-    .hero {
-        min-height: 550px;
-        padding: 45px 5%;
-    }
-
-    .hero-logo {
-        width: 190px;
-        height: 190px;
-    }
-
-    .hero h1 {
-        font-size: 29px;
-    }
-
-    .hero h2 {
-        font-size: 20px;
-    }
-
-    .hero p {
-        font-size: 13px;
-    }
-
-    section:not(.hero) {
-        padding: 50px 6%;
-    }
-
-    section h2 {
-        font-size: 25px;
-    }
-
-    .book {
-        display: block;
-        width: 100%;
-        min-width: 0;
-        margin: 18px 0;
-    }
-
-    .book p {
-        min-height: auto;
-    }
-
-    footer {
-        padding: 30px 10px;
-    }
-}
-
-/* SMALL MOBILE */
-
-@media screen and (max-width: 380px) {
-
-    .hero-logo {
-        width: 155px;
-        height: 155px;
-    }
-
-    .hero h1 {
-        font-size: 25px;
-    }
-
-    nav {
-        gap: 8px 11px;
-    }
-
-    nav a {
-        font-size: 11px;
-    }
-
-}
-
-/* LOGO SIZE ADJUSTMENT */
-
-.site-logo {
+  .footer-logo {
     width: 45px;
     height: 45px;
+  }
 }
-
-.hero-logo {
-    width: 110px;
-    height: 110px;
-    margin-bottom: 15px;
-}
-
-.footer-logo {
-    width: 55px;
-    height: 55px;
-}
-
-/* MOBILE LOGO */
-
-@media screen and (max-width: 768px) {
-    .site-logo {
-        width: 40px;
-        height: 40px;
-    }
-
-    .hero-logo {
-        width: 85px;
-        height: 85px;
-    }
-
-    .footer-logo {
-        width: 45px;
-        height: 45px;
-    }
-}
-
