@@ -1,287 +1,453 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap');
+/* =====================================
+   MANDAR LEKHANI - PROFESSIONAL WEBSITE
+   Author: Mandar Karande
+   Theme: Navy Blue & Golden
+===================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@400;600;700&display=swap');
+
+/* GLOBAL */
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
     scroll-behavior: smooth;
+    scroll-padding-top: 100px;
 }
 
 body {
     font-family: 'Noto Sans Devanagari', Arial, sans-serif;
-    background: #f7f4ed;
-    color: #292820;
+    background: #f7f5ef;
+    color: #202b3c;
     line-height: 1.8;
+}
+
+a {
+    transition: 0.3s ease;
 }
 
 /* HEADER */
 
 header {
-    background: #252b35;
-    color: white;
-    padding: 20px 7%;
+    width: 100%;
+    min-height: 90px;
+    padding: 12px 6%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 15px;
+    gap: 20px;
+    background: #071a35;
+    border-bottom: 2px solid #d9aa42;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px #00000025;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.site-logo {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #071a35;
 }
 
 .logo h2 {
-    color: #e7c58b;
-    font-size: 25px;
+    color: #f5ce70;
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 23px;
+    line-height: 1.4;
 }
 
 .logo span {
+    color: #ffffff;
     font-size: 10px;
     letter-spacing: 3px;
-    color: #ddd;
 }
+
+/* NAVIGATION */
 
 nav {
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 18px;
 }
 
 nav a {
-    color: white;
-    text-decoration: none;
+    color: #ffffff;
     font-size: 13px;
-    transition: 0.3s;
+    text-decoration: none;
+    font-weight: 500;
 }
 
 nav a:hover {
-    color: #e7c58b;
+    color: #f5ce70;
 }
 
-/* HOME */
+/* HOME / HERO */
 
 .hero {
-    min-height: 430px;
-    padding: 100px 8%;
-    text-align: center;
-    background: linear-gradient(135deg, #29394d, #66533e);
+    min-height: 650px;
+    padding: 65px 8%;
+    background:
+        radial-gradient(circle at top, #173967 0%, transparent 55%),
+        linear-gradient(135deg, #06152c, #102d50);
+
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    border-bottom: 4px solid #d9aa42;
+}
+
+.hero-logo {
+    width: 230px;
+    height: 230px;
+    object-fit: contain;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 8px 18px #00000065);
+    border-radius: 10px;
 }
 
 .hero h1 {
-    font-size: 42px;
-    color: #f1d7a7;
+    color: #f5ce70;
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: clamp(30px, 5vw, 48px);
     margin-bottom: 15px;
 }
 
 .hero h2 {
-    font-size: 25px;
-    margin-bottom: 15px;
+    color: #ffffff;
+    font-size: 24px;
+    margin-bottom: 12px;
 }
 
 .hero p {
-    font-size: 16px;
-    margin-bottom: 25px;
+    color: #e5e8ee;
+    font-size: 15px;
+    margin-bottom: 12px;
 }
+
+/* BUTTON */
 
 .btn {
     display: inline-block;
-    background: #e7c58b;
-    color: #252b35;
-    padding: 12px 25px;
-    border-radius: 5px;
+    margin-top: 22px;
+    padding: 12px 28px;
+    background: linear-gradient(135deg, #f5ce70, #d99a27);
+    color: #071a35;
     text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
+    border-radius: 30px;
+    font-weight: 700;
+    box-shadow: 0 5px 15px #00000030;
 }
 
 .btn:hover {
-    background: white;
+    background: #ffffff;
     transform: translateY(-3px);
 }
 
-/* COMMON SECTIONS */
+/* COMMON SECTION */
 
 section:not(.hero) {
-    padding: 65px 9%;
+    padding: 75px 9%;
 }
 
 section h2 {
-    color: #34465b;
-    font-size: 29px;
-    margin-bottom: 20px;
     text-align: center;
+    color: #0b2850;
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: clamp(25px, 3vw, 34px);
+    margin-bottom: 25px;
+}
+
+section h3 {
+    color: #9b7025;
+    margin-bottom: 12px;
 }
 
 section p {
+    color: #555d68;
     font-size: 15px;
-    color: #625f58;
+    margin-bottom: 15px;
 }
 
 /* ABOUT */
 
 #about {
-    background: #fffdf8;
+    background: #ffffff;
     text-align: center;
+    border-bottom: 1px solid #e6d8b9;
 }
 
 #about h3 {
-    font-size: 22px;
-    margin-bottom: 12px;
+    font-size: 24px;
 }
 
 /* BOOKS */
 
 #books {
-    background: #eee8dc;
+    background: #f0ebdf;
+    text-align: center;
+}
+
+#books > p {
     text-align: center;
 }
 
 .book {
     display: inline-block;
     vertical-align: top;
-    background: white;
     width: 29%;
     min-width: 220px;
-    padding: 25px 18px;
-    margin: 12px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px #00000012;
-    transition: 0.3s;
+    min-height: 230px;
+    margin: 15px 1%;
+    padding: 30px 20px;
+    background: #ffffff;
+    border: 1px solid #e2d3b2;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px #071a3512;
+    transition: 0.3s ease;
 }
 
 .book:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 8px 22px #00000020;
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px #071a3525;
+    border-color: #d9aa42;
 }
 
 .book h3 {
-    color: #34465b;
+    color: #0b2850;
     font-size: 19px;
-    margin-bottom: 12px;
+    line-height: 1.6;
 }
 
 .book p {
-    margin-bottom: 18px;
     font-size: 13px;
+    min-height: 55px;
 }
 
 .book a {
     display: inline-block;
-    background: #34465b;
-    color: white;
-    padding: 9px 15px;
-    border-radius: 4px;
+    padding: 10px 20px;
+    background: #071a35;
+    color: #f5ce70;
+    border-radius: 25px;
     text-decoration: none;
     font-size: 13px;
+    font-weight: 600;
 }
 
 .book a:hover {
-    background: #a47b43;
+    background: #d9aa42;
+    color: #071a35;
 }
 
-/* LITERATURE */
+/* MARATHI LITERATURE */
 
 #literature {
-    background: #fffdf8;
+    background: #ffffff;
     text-align: center;
+    border-top: 1px solid #e8dfcf;
+    border-bottom: 1px solid #e8dfcf;
+}
+
+#literature h3 {
+    font-family: 'Noto Serif Devanagari', serif;
 }
 
 /* CYBERSECURITY */
 
 #cyber {
-    background: #e8edf2;
+    background: linear-gradient(135deg, #e8edf4, #f7f5ef);
     text-align: center;
+}
+
+#cyber h2 {
+    color: #071a35;
 }
 
 /* BLOG */
 
 #blog {
-    background: #f7f4ed;
+    background: #f0ebdf;
     text-align: center;
 }
 
 /* CONTACT */
 
 #contact {
-    background: #29394d;
-    color: white;
+    background: #071a35;
     text-align: center;
+    color: white;
+    border-top: 3px solid #d9aa42;
 }
 
 #contact h2 {
-    color: #f1d7a7;
+    color: #f5ce70;
 }
 
 #contact p {
-    color: white;
-    margin-bottom: 15px;
+    color: #e4e8ef;
 }
 
 #contact a {
-    color: #f1d7a7;
+    display: inline-block;
+    margin-top: 12px;
+    padding: 12px 24px;
+    background: #f5ce70;
+    color: #071a35;
     text-decoration: none;
+    border-radius: 25px;
+    font-weight: 700;
+}
+
+#contact a:hover {
+    background: #ffffff;
 }
 
 /* FOOTER */
 
 footer {
-    background: #1d232c;
-    color: white;
+    background: #040f20;
+    color: #ffffff;
+    padding: 35px 15px;
     text-align: center;
-    padding: 25px 10px;
+    border-top: 2px solid #d9aa42;
+}
+
+.footer-logo {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    margin-bottom: 10px;
 }
 
 footer h3 {
-    color: #e7c58b;
-    margin-bottom: 8px;
+    color: #f5ce70;
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 22px;
 }
 
 footer p {
+    color: #d8dce3;
     font-size: 12px;
-    color: #ddd;
+    margin-top: 5px;
 }
 
 /* MOBILE RESPONSIVE */
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
 
     header {
         flex-direction: column;
-        text-align: center;
-    }
-
-    nav {
-        justify-content: center;
+        padding: 15px 4%;
         gap: 12px;
     }
 
-    .hero {
-        padding: 75px 6%;
-        min-height: 350px;
+    .logo {
+        justify-content: center;
     }
 
-    .hero h1 {
-        font-size: 30px;
+    .site-logo {
+        width: 58px;
+        height: 58px;
     }
 
-    .hero h2 {
+    .logo h2 {
         font-size: 21px;
     }
 
+    nav {
+        gap: 10px 15px;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .hero {
+        min-height: 550px;
+        padding: 45px 5%;
+    }
+
+    .hero-logo {
+        width: 190px;
+        height: 190px;
+    }
+
+    .hero h1 {
+        font-size: 29px;
+    }
+
+    .hero h2 {
+        font-size: 20px;
+    }
+
+    .hero p {
+        font-size: 13px;
+    }
+
     section:not(.hero) {
-        padding: 45px 6%;
+        padding: 50px 6%;
     }
 
     section h2 {
-        font-size: 24px;
+        font-size: 25px;
     }
 
     .book {
         display: block;
         width: 100%;
-        margin: 15px 0;
+        min-width: 0;
+        margin: 18px 0;
     }
+
+    .book p {
+        min-height: auto;
+    }
+
+    footer {
+        padding: 30px 10px;
+    }
+}
+
+/* SMALL MOBILE */
+
+@media screen and (max-width: 380px) {
+
+    .hero-logo {
+        width: 155px;
+        height: 155px;
+    }
+
+    .hero h1 {
+        font-size: 25px;
+    }
+
+    nav {
+        gap: 8px 11px;
+    }
+
+    nav a {
+        font-size: 11px;
+    }
+
 }
