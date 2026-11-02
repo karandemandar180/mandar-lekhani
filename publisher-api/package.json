@@ -1,0 +1,13 @@
+{
+  "name": "mandar-lekhani-publisher",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Secure publishing API for Mandar Lekhani",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
