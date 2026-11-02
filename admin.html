@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin Dashboard | मंदार लेखणी</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f3f5f9;color:#172033;font-family:Arial,sans-serif}
+header{background:#071a35;color:white;padding:20px}
+header h2{margin:0}
+.container{width:min(850px,94%);margin:25px auto}
+.card{background:white;padding:22px;border-radius:12px;margin-bottom:20px;box-shadow:0 3px 15px #00000010}
+h3{color:#071a35}
+label{display:block;font-weight:bold;margin:14px 0 6px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #ccd2dc;border-radius:7px;font-size:15px}
+textarea{min-height:100px;resize:vertical}
+button{padding:12px 17px;border:0;border-radius:7px;background:#071a35;color:white;cursor:pointer;margin:7px 5px 7px 0}
+button:hover{background:#c49a45;color:#071a35}
+.secondary{background:#e8edf5;color:#071a35}
+#preview{border:1px solid #ddd;padding:15px;border-radius:8px;line-height:1.7;overflow-wrap:anywhere}
+.status{padding:12px;background:#edf7ed;border-radius:7px;margin-top:12px}
+small{color:#667085}
+</style>
+</head>
+<body>
+
+<header>
+<h2>मंदार लेखणी – Admin Dashboard</h2>
+<p>Article Publishing Centre</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h3>नवीन लेख तयार करा</h3>
+
+<label>लेखाचे शीर्षक</label>
+<input id="title" placeholder="लेखाचे शीर्षक">
+
+<label>Category</label>
+<select id="category">
+<option>Cyber Security</option>
+<option>Cyber Law</option>
+<option>Digital Forensics</option>
+<option>Marathi Literature</option>
+<option>Poetry</option>
+<option>Technology</option>
+<option>English Articles</option>
+</select>
+
+<label>तारीख</label>
+<input type="date" id="date">
+
+<label>लेखक</label>
+<input id="author" value="मंदार कारंडे">
+
+<label>Image URL (ऐच्छिक)</label>
+<input id="image" placeholder="https://example.com/image.jpg">
+
+<label>लेखाचा परिचय</label>
+<textarea id="excerpt" placeholder="लेखाचा थोडक्यात परिचय"></textarea>
+
+<label>संपूर्ण लेख – प्रत्येक परिच्छेद नवीन ओळीत लिहा</label>
+<textarea id="content" rows="10" placeholder="पहिला परिच्छेद...
+
+दुसरा परिच्छेद...
+
+तिसरा परिच्छेद..."></textarea>
+
+<button onclick="previewArticle()">Preview</button>
+<button onclick="addArticle()">लेख तयार करा</button>
+<button class="secondary" onclick="clearForm()">Clear</button>
+</div>
+
+<div class="card">
+<h3>लेखाचा Preview</h3>
+<div id="preview">येथे लेखाचा Preview दिसेल.</div>
+</div>
+
+<div class="card">
+<h3>Publishing</h3>
+<p>जुन्या लेखांसह नवीन posts.json डाउनलोड करा. त्यानंतर GitHub मधील posts.json अपडेट करून Commit करा.</p>
+<button onclick="downloadJSON()">Download posts.json</button>
+<button class="secondary" onclick="loadExisting()">जुने लेख पुन्हा Load करा</button>
+<div id="status"></div>
+</div>
+
+</div>
+
+<script>
+"use strict";
+
+let posts = [];
+let newPost = null;
+
+const $ = id => document.getElementById(id);
+
+$("date").value = new Date().toISOString().slice(0,10);
+
+function makePost() {
+  const title = $("title").value.trim();
+  const content = $("content").value
+    .split(/\n\s*\n/)
+    .map(p => p.trim())
+    .filter(Boolean);
+
+  if (!title || !content.length) {
+    alert("लेखाचे शीर्षक आणि संपूर्ण लेख भरा.");
+    return null;
+  }
+
+  const slug = title.toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g,"")
+    .replace(/[^a-z0-9]+/g,"-")
+    .replace(/^-|-$/g,"");
+
+  return {
+    id: (slug || "article") + "-" + Date.now(),
+    title,
+    category: $("category").value,
+    date: $("date").value,
+    author: $("author").value.trim() || "मंदार कारंडे",
+    image: $("image").value.trim(),
+    excerpt: $("excerpt").value.trim(),
+    content
+  };
+}
+
+function previewArticle() {
+  const post = makePost();
+  if (!post) return;
+
+  const preview = $("preview");
+  preview.replaceChildren();
+
+  const heading = document.createElement("h2");
+  heading.textContent = post.title;
+  preview.appendChild(heading);
+
+  const meta = document.createElement("p");
+  meta.textContent = post.category + " | " + post.date + " | " + post.author;
+  preview.appendChild(meta);
+
+  const excerpt = document.createElement("p");
+  excerpt.textContent = post.excerpt;
+  preview.appendChild(excerpt);
+
+  post.content.forEach(text => {
+    const p = document.createElement("p");
+    p.textContent = text;
+    preview.appendChild(p);
+  });
+
+  if (post.image) {
+    const img = document.createElement("img");
+    img.src = post.image;
+    img.alt = post.title;
+    img.style.maxWidth = "100%";
+    img.onerror = () => img.remove();
+    preview.prepend(img);
+  }
+}
+
+async function loadExisting() {
+  try {
+    const response = await fetch("./posts.json?refresh=" + Date.now());
+    if (!response.ok) throw new Error("Load failed");
+
+    const data = await response.json();
+    if (!Array.isArray(data)) throw new Error("Invalid JSON");
+
+    posts = data;
+    newPost = null;
+    $("status").textContent = posts.length + " जुने लेख Load झाले.";
+    $("status").className = "status";
+  } catch (error) {
+    $("status").textContent =
+      "जुने लेख Load झाले नाहीत. वेबसाइटवरून Dashboard उघडा किंवा posts.json तपासा.";
+    $("status").className = "status";
+  }
+}
+
+function addArticle() {
+  const post = makePost();
+  if (!post) return;
+
+  if (posts.some(item => item.title === post.title)) {
+    if (!confirm("याच शीर्षकाचा लेख आधीपासून आहे. तरी जोडायचा का?")) return;
+  }
+
+  posts.push(post);
+  newPost = post;
+
+  $("status").textContent =
+    "नवीन लेख जोडला. आता Download posts.json करा.";
+  $("status").className = "status";
+}
+
+function downloadJSON() {
+  if (!posts.length) {
+    alert("प्रथम जुने लेख Load करा.");
+    return;
+  }
+
+  if (newPost && !posts.some(p => p.id === newPost.id)) {
+    alert("नवीन लेख यादीत नाही.");
+    return;
+  }
+
+  const blob = new Blob(
+    [JSON.stringify(posts, null, 2)],
+    {type:"application/json"}
+  );
+
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "posts.json";
+  a.click();
+  URL.revokeObjectURL(url);
+
+  $("status").textContent =
+    "posts.json डाउनलोड झाले. आता GitHub वर जुनी फाइल Replace करून Commit करा.";
+  $("status").className = "status";
+}
+
+function clearForm() {
+  ["title","image","excerpt","content"].forEach(id => $(id).value = "");
+  $("date").value = new Date().toISOString().slice(0,10);
+  $("author").value = "मंदार कारंडे";
+  $("preview").textContent = "येथे लेखाचा Preview दिसेल.";
+}
+
+loadExisting();
+</script>
+</body>
+</html>
