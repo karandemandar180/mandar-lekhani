@@ -2,10 +2,7 @@
 (function () {
   "use strict";
 
-  // ----------------------------------
   // ELEMENTS
-  // ----------------------------------
-
   const year = document.getElementById("year");
   const list = document.getElementById("posts-list");
   const searchInput = document.getElementById("blog-search");
@@ -18,10 +15,7 @@
 
   let allPosts = [];
 
-  // ----------------------------------
-  // HELPER FUNCTION
-  // ----------------------------------
-
+  // HELPER FUNCTIONS
   function addText(parent, tag, value, className) {
     const element = document.createElement(tag);
     element.textContent = value || "";
@@ -35,47 +29,34 @@
   }
 
   function normalize(value) {
-    return String(value || "")
-      .trim()
-      .toLocaleLowerCase();
+    return String(value || "").trim().toLocaleLowerCase();
   }
 
-  // ----------------------------------
-  // DISPLAY BLOG POSTS
-  // ----------------------------------
-
+  // BLOG POSTS
   function renderPosts() {
     if (!list) return;
 
-    const searchText = normalize(
-      searchInput ? searchInput.value : ""
-    );
+    const searchText = normalize(searchInput?.value);
+    const selectedCategory = normalize(categoryFilter?.value);
 
-    const selectedCategory = normalize(
-      categoryFilter ? categoryFilter.value : ""
-    );
+    const filteredPosts = [...allPosts].reverse().filter(function (post) {
+      const searchableText = [
+        post.title,
+        post.category,
+        post.author,
+        post.excerpt,
+        ...(Array.isArray(post.content) ? post.content : [])
+      ].join(" ");
 
-    const filteredPosts = [...allPosts]
-      .reverse()
-      .filter(function (post) {
+      const matchesSearch =
+        normalize(searchableText).includes(searchText);
 
-        const searchableText = [
-          post.title,
-          post.category,
-          post.author,
-          post.excerpt,
-          ...(Array.isArray(post.content) ? post.content : [])
-        ].join(" ");
+      const matchesCategory =
+        selectedCategory === "" ||
+        normalize(post.category) === selectedCategory;
 
-        const matchesSearch =
-          normalize(searchableText).includes(searchText);
-
-        const matchesCategory =
-          selectedCategory === "" ||
-          normalize(post.category) === selectedCategory;
-
-        return matchesSearch && matchesCategory;
-      });
+      return matchesSearch && matchesCategory;
+    });
 
     list.replaceChildren();
 
@@ -90,30 +71,25 @@
     }
 
     filteredPosts.forEach(function (post) {
-
       const card = document.createElement("article");
       card.className = "post-card";
 
       addText(card, "div", post.category, "post-meta");
-
       addText(card, "h2", post.title);
 
       addText(
         card,
         "div",
-        (post.date || "") +
-          " · " +
-          (post.author || "मंदार कारंडे"),
+        (post.date || "") + " · " +
+        (post.author || "मंदार कारंडे"),
         "post-meta"
       );
 
       addText(card, "p", post.excerpt);
 
       const link = document.createElement("a");
-
       link.className = "read-link";
       link.textContent = "पूर्ण लेख वाचा";
-
       link.href =
         "./blog-post.html?id=" +
         encodeURIComponent(post.id);
@@ -123,21 +99,14 @@
     });
   }
 
-  // ----------------------------------
   // CATEGORY FILTER
-  // ----------------------------------
-
   function setupCategories(posts) {
     if (!categoryFilter) return;
-
-    const previousValue = categoryFilter.value;
 
     const categories = [
       ...new Set(
         posts
-          .map(function (post) {
-            return String(post.category || "").trim();
-          })
+          .map(post => String(post.category || "").trim())
           .filter(Boolean)
       )
     ].sort();
@@ -147,58 +116,24 @@
     const allOption = document.createElement("option");
     allOption.value = "";
     allOption.textContent = "सर्व विषय";
-
     categoryFilter.appendChild(allOption);
 
     categories.forEach(function (category) {
-
       const option = document.createElement("option");
-
       option.value = category;
       option.textContent = category;
-
       categoryFilter.appendChild(option);
     });
-
-    const matchingOption = Array.from(
-      categoryFilter.options
-    ).find(function (option) {
-      return normalize(option.value) === normalize(previousValue);
-    });
-
-    if (matchingOption) {
-      categoryFilter.value = matchingOption.value;
-    }
   }
 
-  // ----------------------------------
-  // SEARCH EVENTS
-  // ----------------------------------
-
-  if (searchInput) {
-    searchInput.addEventListener("input", renderPosts);
-  }
-
-  if (categoryFilter) {
-    categoryFilter.addEventListener("change", renderPosts);
-  }
-
-  // ----------------------------------
-  // SINGLE ARTICLE PAGE
-  // ----------------------------------
-
+  // SINGLE ARTICLE + SOCIAL SHARING
   function renderArticle(posts) {
     if (!article) return;
 
-    const params = new URLSearchParams(
-      window.location.search
-    );
-
+    const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
 
-    const post = posts.find(function (item) {
-      return item.id === id;
-    });
+    const post = posts.find(item => item.id === id);
 
     article.replaceChildren();
 
@@ -213,64 +148,119 @@
     }
 
     addText(article, "div", post.category, "article-meta");
-
     addText(article, "h1", post.title);
 
     addText(
       article,
       "div",
-      (post.date || "") +
-        " · लेखक: " +
-        (post.author || "मंदार कारंडे"),
+      (post.date || "") + " · लेखक: " +
+      (post.author || "मंदार कारंडे"),
       "article-meta"
     );
 
     if (post.image) {
       const img = document.createElement("img");
-
       img.className = "article-image";
       img.src = post.image;
       img.alt = post.title;
-
       article.appendChild(img);
     }
 
     const content = document.createElement("div");
     content.className = "article-content";
 
-    const paragraphs = Array.isArray(post.content)
-      ? post.content
-      : [];
-
-    paragraphs.forEach(function (paragraph) {
-      addText(content, "p", paragraph);
-    });
+    (Array.isArray(post.content) ? post.content : [])
+      .forEach(paragraph => addText(content, "p", paragraph));
 
     article.appendChild(content);
 
-    const back = document.createElement("a");
+    // SHARE SECTION
+    const shareSection = document.createElement("section");
+    shareSection.className = "share-section";
 
+    addText(shareSection, "h3", "हा लेख शेअर करा");
+
+    const shareButtons = document.createElement("div");
+    shareButtons.className = "share-buttons";
+
+    const pageUrl = window.location.href;
+    const shareText = post.title + " | मंदार लेखणी";
+
+    function createShareLink(label, url) {
+      const link = document.createElement("a");
+      link.textContent = label;
+      link.href = url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.className = "share-btn";
+      shareButtons.appendChild(link);
+    }
+
+    // WHATSAPP
+    createShareLink(
+      "WhatsApp",
+      "https://api.whatsapp.com/send?text=" +
+      encodeURIComponent(shareText + " " + pageUrl)
+    );
+
+    // FACEBOOK
+    createShareLink(
+      "Facebook",
+      "https://www.facebook.com/sharer/sharer.php?u=" +
+      encodeURIComponent(pageUrl)
+    );
+
+    // LINKEDIN
+    createShareLink(
+      "LinkedIn",
+      "https://www.linkedin.com/sharing/share-offsite/?url=" +
+      encodeURIComponent(pageUrl)
+    );
+
+    // COPY LINK
+    const copyButton = document.createElement("button");
+    copyButton.type = "button";
+    copyButton.textContent = "Copy Link";
+    copyButton.className = "share-btn";
+
+    copyButton.addEventListener("click", async function () {
+      try {
+        await navigator.clipboard.writeText(pageUrl);
+        copyButton.textContent = "Link Copied!";
+      } catch (error) {
+        window.prompt("हा लेख लिंक Copy करा:", pageUrl);
+      }
+    });
+
+    shareButtons.appendChild(copyButton);
+    shareSection.appendChild(shareButtons);
+    article.appendChild(shareSection);
+
+    // BACK BUTTON
+    const back = document.createElement("a");
     back.href = "./blog.html";
     back.textContent = "← सर्व लेखांकडे परत जा";
-
     article.appendChild(back);
   }
 
-  // ----------------------------------
-  // LOAD POSTS FROM JSON
-  // ----------------------------------
+  // SEARCH EVENTS
+  if (searchInput) {
+    searchInput.addEventListener("input", renderPosts);
+  }
 
+  if (categoryFilter) {
+    categoryFilter.addEventListener("change", renderPosts);
+  }
+
+  // LOAD JSON
   fetch("./posts.json")
     .then(function (response) {
-
       if (!response.ok) {
         throw new Error("Posts file not found");
       }
-
       return response.json();
     })
     .then(function (posts) {
-
       if (!Array.isArray(posts)) {
         throw new Error("Invalid posts format");
       }
@@ -278,13 +268,10 @@
       allPosts = posts;
 
       setupCategories(allPosts);
-
       renderPosts();
-
       renderArticle(allPosts);
     })
     .catch(function (error) {
-
       console.error("Blog Error:", error);
 
       const message =
@@ -292,24 +279,12 @@
 
       if (list) {
         list.replaceChildren();
-
-        addText(
-          list,
-          "p",
-          message,
-          "blog-error"
-        );
+        addText(list, "p", message, "blog-error");
       }
 
       if (article) {
         article.replaceChildren();
-
-        addText(
-          article,
-          "p",
-          message,
-          "article-error"
-        );
+        addText(article, "p", message, "article-error");
       }
     });
 
