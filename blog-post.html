@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="mr">
 <head>
@@ -6,16 +7,93 @@
 <title>लेख | मंदार लेखणी</title>
 <meta name="description" content="मंदार लेखणीचे लेख वाचा.">
 <link rel="stylesheet" href="./style.css">
+
 <style>
-.article-wrap{width:min(850px,92%);margin:40px auto;line-height:1.9}
-.article-wrap h1{font-size:32px;color:#071a35;line-height:1.35;margin:18px 0}
-.article-meta{color:#667085;font-size:14px;margin-bottom:25px}
-.article-content p{margin:0 0 20px}
-.article-image{width:100%;max-height:380px;object-fit:cover;border-radius:12px}
-.article-error{padding:20px;background:#fff4e5;border-radius:8px}
+.article-wrap {
+  width: min(850px,92%);
+  margin: 40px auto;
+  line-height: 1.9;
+}
+
+.article-wrap h1 {
+  font-size: 32px;
+  color: #071a35;
+  line-height: 1.35;
+  margin: 18px 0;
+}
+
+.article-meta {
+  color: #667085;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+.article-content p {
+  margin: 0 0 20px;
+}
+
+.article-image {
+  width: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.article-error {
+  padding: 20px;
+  background: #fff4e5;
+  border-radius: 8px;
+}
+
+/* SHARE BUTTON DESIGN */
+.share-section {
+  margin: 35px 0;
+  padding: 20px;
+  background: #f4f6fa;
+  border-radius: 12px;
+}
+
+.share-section h3 {
+  color: #071a35;
+  margin-bottom: 15px;
+}
+
+.share-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.share-btn {
+  display: inline-block;
+  padding: 10px 16px;
+  background: #071a35;
+  color: #ffffff !important;
+  text-decoration: none;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.share-btn:hover {
+  background: #c49a45;
+  color: #071a35 !important;
+}
+
+@media(max-width:600px) {
+  .article-wrap h1 {
+    font-size: 25px;
+  }
+  .share-btn {
+    padding: 9px 12px;
+  }
+}
 </style>
 </head>
+
 <body>
+
 <header>
   <div class="container nav">
     <a class="brand" href="./index.html">
@@ -38,6 +116,7 @@
     <p>© <span id="year"></span> मंदार लेखणी | लेखक: मंदार कारंडे</p>
   </div>
 </footer>
+
 <script src="./blog.js"></script>
 </body>
 </html>
