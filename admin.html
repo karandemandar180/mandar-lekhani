@@ -2,729 +2,407 @@
 <!DOCTYPE html>
 <html lang="mr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard | मंदार लेखणी</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-      background: #f3f5f9;
-      color: #222;
-    }
-
-    .container {
-      max-width: 1050px;
-      margin: auto;
-    }
-
-    header {
-      background: #101c35;
-      color: #d6b46a;
-      padding: 22px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-    }
-
-    header h1 {
-      margin: 0 0 8px;
-    }
-
-    .card {
-      background: #fff;
-      padding: 22px;
-      margin-bottom: 20px;
-      border-radius: 12px;
-      box-shadow: 0 3px 12px #0000000d;
-    }
-
-    h2, h3 {
-      color: #172746;
-    }
-
-    label {
-      display: block;
-      margin: 14px 0 6px;
-      font-weight: bold;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccd2dd;
-      border-radius: 7px;
-      font-size: 15px;
-      background: #fff;
-    }
-
-    textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    button {
-      background: #172746;
-      color: white;
-      border: none;
-      padding: 11px 17px;
-      margin: 10px 6px 0 0;
-      border-radius: 7px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    button:hover {
-      opacity: 0.88;
-    }
-
-    button.secondary {
-      background: #64748b;
-    }
-
-    button.danger {
-      background: #b42318;
-    }
-
-    button.gold {
-      background: #b58b3b;
-      color: #fff;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    .status {
-      margin-top: 14px;
-      padding: 10px;
-      border-radius: 7px;
-      background: #f1f5f9;
-      overflow-wrap: anywhere;
-    }
-
-    .article-item {
-      border: 1px solid #e1e5eb;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 12px;
-    }
-
-    .article-item h3 {
-      margin-top: 0;
-    }
-
-    .muted {
-      color: #667085;
-      font-size: 13px;
-    }
-
-    .preview {
-      background: #fafafa;
-      border: 1px dashed #b9c2d0;
-      border-radius: 8px;
-      padding: 15px;
-      margin-top: 15px;
-      overflow-wrap: anywhere;
-    }
-
-    .top-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    @media (max-width: 600px) {
-      body {
-        padding: 10px;
-      }
-
-      .card {
-        padding: 15px;
-      }
-
-      button {
-        width: 100%;
-        margin-right: 0;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mandar Lekhani | Admin Dashboard</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f5f9;color:#18243a}
+header{background:#101d35;color:#fff;padding:20px;text-align:center}
+header h1{margin:0;color:#d9b66f}
+.container{max-width:1000px;margin:25px auto;padding:15px}
+.card{background:white;padding:22px;border-radius:12px;margin-bottom:20px;box-shadow:0 3px 15px #00000010}
+h2{color:#172b4d;margin-top:0}
+label{display:block;font-weight:bold;margin:13px 0 6px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #ccd3df;border-radius:7px;font-size:15px}
+textarea{min-height:130px;resize:vertical}
+button{border:0;border-radius:7px;padding:11px 16px;margin:6px 4px 6px 0;background:#172b4d;color:white;cursor:pointer}
+button.gold{background:#b38a3d}
+button.red{background:#b83232}
+button.green{background:#237a50}
+.status{margin-top:12px;white-space:pre-wrap;font-size:14px}
+.post{border:1px solid #e0e4eb;padding:15px;border-radius:8px;margin:12px 0}
+.post h3{margin:0 0 8px}
+.small{font-size:13px;color:#667085}
+.hidden{display:none}
+.actions{display:flex;flex-wrap:wrap;gap:5px}
+</style>
 </head>
-
 <body>
+<header>
+<h1>मंदार लेखणी</h1>
+<p>Admin Publishing Dashboard</p>
+</header>
+
 <div class="container">
 
-  <header>
-    <h1>मंदार लेखणी</h1>
-    <p>Admin Dashboard | Article Management & Publishing</p>
-  </header>
+<section class="card" id="login-card">
+<h2>Admin Login</h2>
+<label for="admin-password">Admin Password</label>
+<input type="password" id="admin-password" placeholder="Enter admin password">
+<button class="gold" onclick="adminLogin()">Login</button>
+<div id="login-status" class="status"></div>
+</section>
 
-  <!-- LOGIN -->
-  <section class="card" id="login-card">
-    <h2>Admin Login</h2>
+<section id="dashboard" class="hidden">
 
-    <label for="admin-password">Admin Password</label>
-    <input
-      type="password"
-      id="admin-password"
-      placeholder="तुमचा Admin Password"
-      autocomplete="current-password"
-    >
+<div class="card">
+<h2>Welcome to Admin Dashboard</h2>
+<p>येथून तुमचे Blog Articles व्यवस्थापित आणि प्रकाशित करा.</p>
+<button class="red" onclick="adminLogout()">Logout</button>
+<button onclick="loadExisting()">Refresh Articles</button>
+<div id="dashboard-status" class="status"></div>
+</div>
 
-    <button onclick="adminLogin()">Login</button>
-    <div id="login-status" class="status" aria-live="polite"></div>
-  </section>
+<div class="card">
+<h2 id="form-heading">Add New Article</h2>
+<form id="article-form">
+<label>Article Title</label>
+<input id="article-title" required>
 
-  <!-- DASHBOARD -->
-  <div id="dashboard" class="hidden">
+<label>Category</label>
+<select id="article-category" required>
+<option value="Cyber Security">Cyber Security</option>
+<option value="Cyber Law">Cyber Law</option>
+<option value="Digital Forensics">Digital Forensics</option>
+<option value="Marathi Literature">Marathi Literature</option>
+<option value="Technology">Technology</option>
+</select>
 
-    <section class="card">
-      <h2>Dashboard</h2>
-      <p>तुमच्या वेबसाइटवरील लेख येथे व्यवस्थापित करा.</p>
+<label>Date</label>
+<input type="date" id="article-date" required>
 
-      <div class="top-actions">
-        <button onclick="loadExisting(true)">Refresh Articles</button>
-        <button class="secondary" onclick="adminLogout()">Logout</button>
-      </div>
+<label>Author</label>
+<input id="article-author" value="मंदार कारंडे" required>
 
-      <div id="status" class="status" aria-live="polite">
-        Dashboard तयार आहे.
-      </div>
-    </section>
+<label>Image URL (Optional)</label>
+<input id="article-image" placeholder="https://...">
 
-    <!-- ARTICLE FORM -->
-    <section class="card">
-      <h2 id="form-heading">नवीन लेख तयार करा</h2>
+<label>Excerpt / Short Description</label>
+<textarea id="article-excerpt" required></textarea>
 
-      <form id="article-form">
+<label>Article Content</label>
+<textarea id="article-content" required placeholder="प्रत्येक परिच्छेदामध्ये एक रिकामी ओळ ठेवा."></textarea>
 
-        <label for="article-title">लेखाचे शीर्षक *</label>
-        <input
-          type="text"
-          id="article-title"
-          required
-          placeholder="लेखाचे शीर्षक"
-        >
+<button type="button" onclick="previewArticle()">Preview</button>
+<button type="submit" class="gold">Save Article</button>
+<button type="button" onclick="clearForm()">Clear Form</button>
+</form>
+<div id="form-status" class="status"></div>
+<div id="preview-area"></div>
+</div>
 
-        <label for="article-category">Category *</label>
-        <select id="article-category" required>
-          <option value="Cyber Security">Cyber Security</option>
-          <option value="Cyber Law">Cyber Law</option>
-          <option value="Digital Forensics">Digital Forensics</option>
-          <option value="Marathi Literature">Marathi Literature</option>
-          <option value="Poetry">Poetry</option>
-          <option value="Technology">Technology</option>
-          <option value="Personal">Personal</option>
-        </select>
+<div class="card">
+<h2>Existing Articles</h2>
+<label>Search Articles</label>
+<input id="article-search" placeholder="Search by title or category..." oninput="renderArticles()">
+<div id="posts-list">Loading articles...</div>
+</div>
 
-        <label for="article-date">Date *</label>
-        <input type="date" id="article-date" required>
+<div class="card">
+<h2>Publish to Website</h2>
+<p>Publish केल्यावर GitHub वरील posts.json अपडेट होईल आणि Render वेबसाइट आपोआप deploy होईल.</p>
+<button class="green" onclick="publishPosts()">Publish to Website</button>
+<div id="publish-status" class="status"></div>
+</div>
 
-        <label for="article-author">Author *</label>
-        <input
-          type="text"
-          id="article-author"
-          value="मंदार कारंडे"
-          required
-        >
-
-        <label for="article-image">Image URL (Optional)</label>
-        <input
-          type="url"
-          id="article-image"
-          placeholder="https://example.com/image.jpg"
-        >
-
-        <label for="article-excerpt">Short Description *</label>
-        <textarea
-          id="article-excerpt"
-          required
-          placeholder="लेखाचा छोटा परिचय लिहा..."
-        ></textarea>
-
-        <label for="article-content">
-          Article Content *
-        </label>
-        <textarea
-          id="article-content"
-          required
-          style="min-height:220px"
-          placeholder="लेखाचे पूर्ण लिखाण येथे करा.
-
-प्रत्येक नवीन परिच्छेदानंतर एक रिकामी ओळ ठेवा."
-        ></textarea>
-
-        <div class="top-actions">
-          <button type="button" onclick="previewArticle()">
-            Preview
-          </button>
-
-          <button type="submit" class="gold" id="save-button">
-            Save Article
-          </button>
-
-          <button
-            type="button"
-            class="secondary"
-            onclick="clearForm()"
-          >
-            Clear Form
-          </button>
-        </div>
-
-      </form>
-
-      <div id="preview-box" class="preview hidden"></div>
-    </section>
-
-    <!-- EXISTING ARTICLES -->
-    <section class="card">
-      <h2>Published / Existing Articles</h2>
-
-      <label for="article-search">Search Articles</label>
-      <input
-        type="search"
-        id="article-search"
-        placeholder="लेखाचे शीर्षक किंवा Category शोधा..."
-        oninput="renderArticles()"
-      >
-
-      <div id="posts-list">
-        लेख Load होत आहेत...
-      </div>
-    </section>
-
-    <!-- PUBLISH -->
-    <section class="card">
-      <h2>Direct Publishing</h2>
-
-      <p>
-        Publish केल्यावर लेख थेट GitHub मधील posts.json मध्ये
-        Save होतील. त्यानंतर Render Auto Deploy सुरू होईल.
-      </p>
-
-      <button class="gold" onclick="publishPosts()">
-        Publish to Website
-      </button>
-
-      <div id="publish-status" class="status" aria-live="polite">
-        Publish करण्यापूर्वी लेख तपासा.
-      </div>
-    </section>
-
-  </div>
+</section>
 </div>
 
 <script>
-  // Backend API URL
-  const API_URL = "https://mandar-lekhani-api.onrender.com";
+const API_URL = "https://mandar-lekhani-api.onrender.com";
+const TOKEN_KEY = "mandar_lekhani_admin_token";
 
-  let posts = [];
-  let editingId = null;
-  let dirty = false;
+let authToken = sessionStorage.getItem(TOKEN_KEY) || "";
+let posts = [];
+let editingId = null;
 
-  const $ = (id) => document.getElementById(id);
+async function apiRequest(path, options = {}) {
+  const headers = {
+    "Content-Type": "application/json",
+    ...(options.headers || {})
+  };
 
-  function setStatus(message, element = "status") {
-    const box = $(element);
-    if (box) box.textContent = message;
+  if (authToken) {
+    headers.Authorization = "Bearer " + authToken;
   }
 
-  async function apiRequest(path, options = {}) {
-    const response = await fetch(API_URL + path, {
-      ...options,
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-        ...(options.headers || {})
-      }
-    });
-
-    const data = await response.json().catch(() => ({}));
-
-    if (!response.ok) {
-      throw new Error(data.error || "Request failed: " + response.status);
-    }
-
-    return data;
-  }
-
-  // LOGIN
-  async function adminLogin() {
-    const password = $("admin-password").value;
-
-    if (!password) {
-      setStatus("कृपया Admin Password टाका.", "login-status");
-      return;
-    }
-
-    setStatus("Login होत आहे...", "login-status");
-
-    try {
-      await apiRequest("/api/login", {
-        method: "POST",
-        body: JSON.stringify({ password })
-      });
-
-      $("admin-password").value = "";
-      $("login-card").classList.add("hidden");
-      $("dashboard").classList.remove("hidden");
-
-      await loadExisting(true);
-      setStatus("Login यशस्वी झाले.");
-    } catch (error) {
-      setStatus("Login Error: " + error.message, "login-status");
-    }
-  }
-
-  // LOGOUT
-  async function adminLogout() {
-    try {
-      await apiRequest("/api/logout", {
-        method: "POST",
-        body: JSON.stringify({})
-      });
-    } catch (error) {
-      console.error(error);
-    }
-
-    posts = [];
-    editingId = null;
-    dirty = false;
-
-    $("dashboard").classList.add("hidden");
-    $("login-card").classList.remove("hidden");
-    $("posts-list").textContent = "";
-    clearForm();
-    setStatus("Logout झाले.", "login-status");
-  }
-
-  // CHECK SESSION
-  async function checkSession() {
-    try {
-      await apiRequest("/api/session");
-
-      $("login-card").classList.add("hidden");
-      $("dashboard").classList.remove("hidden");
-
-      await loadExisting(true);
-    } catch (error) {
-      $("dashboard").classList.add("hidden");
-      $("login-card").classList.remove("hidden");
-    }
-  }
-
-  // LOAD POSTS FROM GITHUB THROUGH API
-  async function loadExisting(force = false) {
-    if (dirty && !force) {
-      const confirmReload = confirm(
-        "तुमचे काही बदल Save केलेले नाहीत. Reload करायचे?"
-      );
-
-      if (!confirmReload) return;
-    }
-
-    setStatus("लेख Load होत आहेत...");
-
-    try {
-      const data = await apiRequest("/api/posts");
-
-      if (!Array.isArray(data.posts)) {
-        throw new Error("API कडून योग्य posts list मिळाली नाही.");
-      }
-
-      posts = data.posts;
-      dirty = false;
-      renderArticles();
-
-      setStatus(posts.length + " लेख यशस्वीपणे Load झाले.");
-    } catch (error) {
-      setStatus("Load Error: " + error.message);
-    }
-  }
-
-  // CREATE POST OBJECT
-  function makePost() {
-    const title = $("article-title").value.trim();
-    const category = $("article-category").value;
-    const date = $("article-date").value;
-    const author = $("article-author").value.trim();
-    const image = $("article-image").value.trim();
-    const excerpt = $("article-excerpt").value.trim();
-    const contentText = $("article-content").value.trim();
-
-    if (!title || !date || !author || !excerpt || !contentText) {
-      throw new Error("कृपया सर्व आवश्यक माहिती भरा.");
-    }
-
-    const content = contentText
-      .split(/\n\s*\n/)
-      .map(item => item.trim())
-      .filter(Boolean);
-
-    const id = editingId || (
-      "article-" + Date.now()
-    );
-
-    return {
-      id,
-      title,
-      category,
-      date,
-      author,
-      image,
-      excerpt,
-      content
-    };
-  }
-
-  // SAVE ARTICLE
-  $("article-form").addEventListener("submit", function(event) {
-    event.preventDefault();
-    saveArticle();
+  const response = await fetch(API_URL + path, {
+    ...options,
+    headers
   });
 
-  function saveArticle() {
-    try {
-      const post = makePost();
+  const data = await response.json().catch(() => ({}));
 
-      if (editingId) {
-        const index = posts.findIndex(p => p.id === editingId);
-
-        if (index === -1) {
-          throw new Error("Edit करण्यासाठी लेख सापडला नाही.");
-        }
-
-        posts[index] = post;
-        setStatus("लेख Update झाला. आता Publish to Website करा.");
-      } else {
-        posts.unshift(post);
-        setStatus("नवीन लेख Add झाला. आता Publish to Website करा.");
-      }
-
-      dirty = true;
-      renderArticles();
-      clearForm();
-
-    } catch (error) {
-      setStatus(error.message);
-    }
+  if (!response.ok) {
+    throw new Error(data.error || data.message || "Request failed");
   }
 
-  // PREVIEW
-  function previewArticle() {
-    try {
-      const post = makePost();
-      const box = $("preview-box");
+  return data;
+}
 
-      box.replaceChildren();
+async function adminLogin() {
+  const password = document.getElementById("admin-password").value;
+  const status = document.getElementById("login-status");
 
-      const title = document.createElement("h2");
-      title.textContent = post.title;
-      box.appendChild(title);
-
-      const details = document.createElement("p");
-      details.textContent =
-        post.category + " | " + post.date + " | " + post.author;
-      box.appendChild(details);
-
-      const excerpt = document.createElement("p");
-      excerpt.textContent = post.excerpt;
-      box.appendChild(excerpt);
-
-      post.content.forEach(paragraph => {
-        const p = document.createElement("p");
-        p.textContent = paragraph;
-        box.appendChild(p);
-      });
-
-      box.classList.remove("hidden");
-
-    } catch (error) {
-      setStatus(error.message);
-    }
+  if (!password) {
+    status.textContent = "Please enter your password.";
+    return;
   }
 
-  // EDIT ARTICLE
-  function editArticle(id) {
-    const post = posts.find(p => p.id === id);
+  status.textContent = "Logging in...";
 
-    if (!post) {
-      setStatus("लेख सापडला नाही.");
-      return;
+  try {
+    const data = await apiRequest("/api/login", {
+      method: "POST",
+      body: JSON.stringify({ password })
+    });
+
+    if (!data.token) {
+      throw new Error("Login token not received.");
     }
 
-    editingId = id;
+    authToken = data.token;
+    sessionStorage.setItem(TOKEN_KEY, authToken);
 
-    $("article-title").value = post.title || "";
-    $("article-category").value = post.category || "Cyber Security";
-    $("article-date").value = post.date || "";
-    $("article-author").value = post.author || "मंदार कारंडे";
-    $("article-image").value = post.image || "";
-    $("article-excerpt").value = post.excerpt || "";
+    document.getElementById("login-card").classList.add("hidden");
+    document.getElementById("dashboard").classList.remove("hidden");
+    document.getElementById("admin-password").value = "";
 
-    $("article-content").value = Array.isArray(post.content)
-      ? post.content.join("\n\n")
-      : (post.content || "");
-
-    $("form-heading").textContent = "लेख Edit / Update करा";
-    $("save-button").textContent = "Update Article";
-    $("preview-box").classList.add("hidden");
-
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    await loadExisting();
+  } catch (error) {
+    status.textContent = "Login Error: " + error.message;
   }
+}
 
-  // CANCEL / CLEAR FORM
-  function clearForm() {
-    $("article-form").reset();
+async function checkSession() {
+  if (!authToken) return;
 
-    $("article-author").value = "मंदार कारंडे";
-    $("article-date").value = new Date().toISOString().slice(0, 10);
-
-    editingId = null;
-
-    $("form-heading").textContent = "नवीन लेख तयार करा";
-    $("save-button").textContent = "Save Article";
-    $("preview-box").classList.add("hidden");
+  try {
+    await apiRequest("/api/session");
+    document.getElementById("login-card").classList.add("hidden");
+    document.getElementById("dashboard").classList.remove("hidden");
+    await loadExisting();
+  } catch (error) {
+    authToken = "";
+    sessionStorage.removeItem(TOKEN_KEY);
   }
+}
 
-  // DELETE ARTICLE
-  function deleteArticle(id) {
-    const post = posts.find(p => p.id === id);
-
-    if (!post) return;
-
-    const confirmed = confirm(
-      '"' + post.title + '" हा लेख Delete करायचा आहे का?'
-    );
-
-    if (!confirmed) return;
-
-    posts = posts.filter(p => p.id !== id);
-
-    if (editingId === id) {
-      clearForm();
+async function adminLogout() {
+  try {
+    if (authToken) {
+      await apiRequest("/api/logout", { method: "POST" });
     }
+  } catch (error) {
+    console.warn("Logout request:", error.message);
+  }
 
-    dirty = true;
+  authToken = "";
+  sessionStorage.removeItem(TOKEN_KEY);
+  posts = [];
+
+  document.getElementById("dashboard").classList.add("hidden");
+  document.getElementById("login-card").classList.remove("hidden");
+  document.getElementById("login-status").textContent = "Logged out.";
+  document.getElementById("posts-list").innerHTML = "";
+}
+
+async function loadExisting() {
+  const list = document.getElementById("posts-list");
+  list.textContent = "Loading articles...";
+
+  try {
+    const data = await apiRequest("/api/posts");
+    posts = Array.isArray(data.posts) ? data.posts : [];
     renderArticles();
-    setStatus("लेख Delete यादीतून काढला. बदल कायम करण्यासाठी Publish करा.");
+
+    document.getElementById("dashboard-status").textContent =
+      posts.length + " articles loaded successfully.";
+  } catch (error) {
+    list.textContent = "Load Error: " + error.message;
+  }
+}
+
+function makePost() {
+  const title = document.getElementById("article-title").value.trim();
+  const category = document.getElementById("article-category").value;
+  const date = document.getElementById("article-date").value;
+  const author = document.getElementById("article-author").value.trim();
+  const image = document.getElementById("article-image").value.trim();
+  const excerpt = document.getElementById("article-excerpt").value.trim();
+  const contentText = document.getElementById("article-content").value.trim();
+
+  const content = contentText
+    .split(/\n\s*\n/)
+    .map(p => p.trim())
+    .filter(Boolean);
+
+  return {
+    id: editingId || "article-" + Date.now(),
+    title,
+    category,
+    date,
+    author,
+    image,
+    excerpt,
+    content
+  };
+}
+
+document.getElementById("article-form").addEventListener("submit", async function(event) {
+  event.preventDefault();
+
+  const status = document.getElementById("form-status");
+
+  if (!this.reportValidity()) return;
+
+  const post = makePost();
+
+  if (!post.content.length) {
+    status.textContent = "Please enter article content.";
+    return;
   }
 
-  // RENDER ARTICLES
-  function renderArticles() {
-    const list = $("posts-list");
-    const search = $("article-search").value.trim().toLowerCase();
+  if (editingId) {
+    posts = posts.map(item => item.id === editingId ? post : item);
+  } else {
+    posts.unshift(post);
+  }
 
-    list.replaceChildren();
+  status.textContent = "Article saved in dashboard. Click Publish to Website to publish it.";
+  clearForm(false);
+  renderArticles();
+});
 
-    const filtered = posts.filter(post => {
-      const text = [
-        post.title,
-        post.category,
-        post.author,
-        post.excerpt
-      ].join(" ").toLowerCase();
+function previewArticle() {
+  const post = makePost();
+  const area = document.getElementById("preview-area");
+  area.replaceChildren();
 
-      return text.includes(search);
+  const heading = document.createElement("h3");
+  heading.textContent = post.title;
+
+  const excerpt = document.createElement("p");
+  excerpt.textContent = post.excerpt;
+
+  const body = document.createElement("div");
+  post.content.forEach(paragraph => {
+    const p = document.createElement("p");
+    p.textContent = paragraph;
+    body.appendChild(p);
+  });
+
+  area.append(heading, excerpt, body);
+}
+
+function editArticle(id) {
+  const post = posts.find(item => item.id === id);
+  if (!post) return;
+
+  editingId = id;
+  document.getElementById("form-heading").textContent = "Edit Article";
+  document.getElementById("article-title").value = post.title || "";
+  document.getElementById("article-category").value = post.category || "Cyber Security";
+  document.getElementById("article-date").value = post.date || "";
+  document.getElementById("article-author").value = post.author || "";
+  document.getElementById("article-image").value = post.image || "";
+  document.getElementById("article-excerpt").value = post.excerpt || "";
+  document.getElementById("article-content").value =
+    Array.isArray(post.content) ? post.content.join("\n\n") : (post.content || "");
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function clearForm(showMessage = true) {
+  document.getElementById("article-form").reset();
+  document.getElementById("article-author").value = "मंदार कारंडे";
+  document.getElementById("form-heading").textContent = "Add New Article";
+  document.getElementById("preview-area").replaceChildren();
+  editingId = null;
+
+  if (showMessage) {
+    document.getElementById("form-status").textContent = "Form cleared.";
+  }
+}
+
+function deleteArticle(id) {
+  if (!confirm("हा लेख Dashboard मधून काढायचा आहे का? Publish केल्याशिवाय वेबसाइटवरील लेख बदलणार नाही.")) return;
+
+  posts = posts.filter(item => item.id !== id);
+  renderArticles();
+  document.getElementById("form-status").textContent =
+    "Article removed from dashboard. Publish to Website to apply this change.";
+}
+
+function renderArticles() {
+  const list = document.getElementById("posts-list");
+  const query = document.getElementById("article-search").value.toLowerCase();
+
+  list.replaceChildren();
+
+  const filtered = posts.filter(post =>
+    (post.title || "").toLowerCase().includes(query) ||
+    (post.category || "").toLowerCase().includes(query)
+  );
+
+  if (!filtered.length) {
+    list.textContent = "No articles found.";
+    return;
+  }
+
+  filtered.forEach(post => {
+    const card = document.createElement("div");
+    card.className = "post";
+
+    const title = document.createElement("h3");
+    title.textContent = post.title || "Untitled";
+
+    const details = document.createElement("p");
+    details.className = "small";
+    details.textContent = (post.category || "") + " | " + (post.date || "");
+
+    const excerpt = document.createElement("p");
+    excerpt.textContent = post.excerpt || "";
+
+    const actions = document.createElement("div");
+    actions.className = "actions";
+
+    const edit = document.createElement("button");
+    edit.textContent = "Edit";
+    edit.onclick = () => editArticle(post.id);
+
+    const remove = document.createElement("button");
+    remove.textContent = "Delete";
+    remove.className = "red";
+    remove.onclick = () => deleteArticle(post.id);
+
+    actions.append(edit, remove);
+    card.append(title, details, excerpt, actions);
+    list.appendChild(card);
+  });
+}
+
+async function publishPosts() {
+  if (!confirm("सर्व बदल वेबसाइटवर Publish करायचे आहेत का?")) return;
+
+  const status = document.getElementById("publish-status");
+  status.textContent = "Publishing...";
+
+  try {
+    const data = await apiRequest("/api/posts", {
+      method: "PUT",
+      body: JSON.stringify({ posts })
     });
 
-    if (filtered.length === 0) {
-      list.textContent = "कोणतेही लेख सापडले नाहीत.";
-      return;
-    }
-
-    filtered.forEach(post => {
-      const item = document.createElement("div");
-      item.className = "article-item";
-
-      const title = document.createElement("h3");
-      title.textContent = post.title || "Untitled";
-      item.appendChild(title);
-
-      const details = document.createElement("p");
-      details.className = "muted";
-      details.textContent =
-        (post.category || "") + " | " +
-        (post.date || "") + " | " +
-        (post.author || "");
-      item.appendChild(details);
-
-      const excerpt = document.createElement("p");
-      excerpt.textContent = post.excerpt || "";
-      item.appendChild(excerpt);
-
-      const editButton = document.createElement("button");
-      editButton.textContent = "Edit";
-      editButton.addEventListener("click", () => editArticle(post.id));
-      item.appendChild(editButton);
-
-      const deleteButton = document.createElement("button");
-      deleteButton.textContent = "Delete";
-      deleteButton.className = "danger";
-      deleteButton.addEventListener("click", () => deleteArticle(post.id));
-      item.appendChild(deleteButton);
-
-      list.appendChild(item);
-    });
+    status.textContent =
+      data.message || "Published successfully. Render deployment may take a few moments.";
+  } catch (error) {
+    status.textContent = "Publish Error: " + error.message;
   }
+}
 
-  // DIRECT PUBLISH TO GITHUB
-  async function publishPosts() {
-    if (editingId) {
-      setStatus(
-        "सध्या Edit सुरू आहे. आधी Update Article करा.",
-        "publish-status"
-      );
-      return;
-    }
-
-    if (!dirty) {
-      setStatus(
-        "Publish करण्यासाठी कोणतेही नवीन बदल नाहीत.",
-        "publish-status"
-      );
-      return;
-    }
-
-    const confirmed = confirm(
-      posts.length + " लेख वेबसाइटवर Publish करायचे आहेत का?"
-    );
-
-    if (!confirmed) return;
-
-    setStatus("GitHub वर Publish होत आहे...", "publish-status");
-
-    try {
-      await apiRequest("/api/posts", {
-        method: "PUT",
-        body: JSON.stringify({ posts })
-      });
-
-      dirty = false;
-
-      setStatus(
-        "यशस्वी! लेख GitHub वर Save झाले. Render Auto Deploy सुरू होईल.",
-        "publish-status"
-      );
-
-    } catch (error) {
-      setStatus(
-        "Publish Error: " + error.message,
-        "publish-status"
-      );
-    }
-  }
-
-  // INITIAL PAGE LOAD
-  $("article-date").value = new Date().toISOString().slice(0, 10);
-  checkSession();
+checkSession();
 </script>
-
 </body>
 </html>
