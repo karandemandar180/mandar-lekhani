@@ -1,11 +1,11 @@
+
 const express = require("express");
 const crypto = require("crypto");
 
 const app = express();
-
 app.use(express.json({ limit: "2mb" }));
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
 const {
   GITHUB_TOKEN,
@@ -32,21 +32,26 @@ if (required.some(value => !value)) {
   process.exit(1);
 }
 
-const COOKIE_NAME = "mandar_publisher_session";
 const SESSION_DURATION = 8 * 60 * 60 * 1000;
 
+// CORS
 app.use((req, res, next) => {
   const origin = req.headers.origin;
 
   if (origin && origin !== ALLOWED_ORIGIN) {
-    return res.status(403).json({ error: "Origin not allowed" });
+    return res.status(403).json({ error: "Origin not allowed." });
   }
 
   if (origin === ALLOWED_ORIGIN) {
     res.setHeader("Access-Control-Allow-Origin", ALLOWED_ORIGIN);
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, OPTIONS");
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "Content-Type, Authorization"
+    );
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "GET, POST, PUT, OPTIONS"
+    );
     res.setHeader("Vary", "Origin");
   }
 
@@ -57,7 +62,8 @@ app.use((req, res, next) => {
   next();
 });
 
-function createSession() {
+// CREATE TOKEN
+function createToken() {
   const payload = Buffer.from(
     JSON.stringify({
       exp: Date.now() + SESSION_DURATION
@@ -72,10 +78,14 @@ function createSession() {
   return `${payload}.${signature}`;
 }
 
-function verifySession(token) {
-  if (!token || !token.includes(".")) return false;
+// VERIFY TOKEN
+function verifyToken(token) {
+  if (typeof token !== "string") return false;
 
-  const [payload, signature] = token.split(".");
+  const parts = token.split(".");
+  if (parts.length !== 2) return false;
+
+  const [payload, signature] = parts;
 
   const expected = crypto
     .createHmac("sha256", SESSION_SECRET)
@@ -86,39 +96,37 @@ function verifySession(token) {
   const b = Buffer.from(expected);
 
   if (a.length !== b.length) return false;
-
   if (!crypto.timingSafeEqual(a, b)) return false;
 
   try {
     const data = JSON.parse(
-      Buffer.from(payload, "base64url").toString()
+      Buffer.from(payload, "base64url").toString("utf8")
     );
 
-    return data.exp > Date.now();
+    return Number.isFinite(data.exp) && data.exp > Date.now();
   } catch {
     return false;
   }
 }
 
+// LOGIN PROTECTION
 function requireLogin(req, res, next) {
-  const cookies = req.headers.cookie || "";
+  const authorization = req.headers.authorization || "";
 
-  const sessionCookie = cookies
-    .split(";")
-    .map(item => item.trim())
-    .find(item => item.startsWith(COOKIE_NAME + "="));
-
-  const token = sessionCookie
-    ? decodeURIComponent(sessionCookie.split("=").slice(1).join("="))
+  const token = authorization.startsWith("Bearer ")
+    ? authorization.slice(7)
     : "";
 
-  if (!verifySession(token)) {
-    return res.status(401).json({ error: "Please login first." });
+  if (!verifyToken(token)) {
+    return res.status(401).json({
+      error: "Session expired. Please login again."
+    });
   }
 
   next();
 }
 
+// GITHUB SETTINGS
 const githubHeaders = {
   Authorization: `Bearer ${GITHUB_TOKEN}`,
   Accept: "application/vnd.github+json",
@@ -128,52 +136,60 @@ const githubHeaders = {
 const githubFileUrl =
   `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/posts.json`;
 
+// HOME
 app.get("/", (req, res) => {
-  res.json({ status: "Mandar Lekhani Publisher API is running." });
+  res.json({
+    status: "Mandar Lekhani Publisher API is running."
+  });
 });
 
+// ADMIN LOGIN
 app.post("/api/login", (req, res) => {
   const password = req.body?.password;
 
-  if (
-    typeof password !== "string" ||
-    password.length !== ADMIN_PASSWORD.length ||
-    !crypto.timingSafeEqual(
-      Buffer.from(password),
-      Buffer.from(ADMIN_PASSWORD)
-    )
-  ) {
-    return res.status(401).json({ error: "Incorrect password." });
+  if (typeof password !== "string") {
+    return res.status(401).json({
+      error: "Incorrect password."
+    });
   }
 
-  const session = createSession();
+  const input = Buffer.from(password);
+  const expected = Buffer.from(ADMIN_PASSWORD);
 
-  res.cookie(COOKIE_NAME, session, {
-    httpOnly: true,
-    secure: true,
-    sameSite: "lax",
-    maxAge: SESSION_DURATION,
-    path: "/"
+  if (
+    input.length !== expected.length ||
+    !crypto.timingSafeEqual(input, expected)
+  ) {
+    return res.status(401).json({
+      error: "Incorrect password."
+    });
+  }
+
+  const token = createToken();
+
+  res.json({
+    success: true,
+    token,
+    message: "Login successful."
   });
-
-  res.json({ success: true, message: "Login successful." });
 });
 
+// LOGOUT
 app.post("/api/logout", (req, res) => {
-  res.clearCookie(COOKIE_NAME, {
-    httpOnly: true,
-    secure: true,
-    sameSite: "lax",
-    path: "/"
+  res.json({
+    success: true,
+    message: "Logged out."
   });
-
-  res.json({ success: true });
 });
 
+// CHECK SESSION
 app.get("/api/session", requireLogin, (req, res) => {
-  res.json({ authenticated: true });
+  res.json({
+    authenticated: true
+  });
 });
 
+// LOAD POSTS
 app.get("/api/posts", requireLogin, async (req, res) => {
   try {
     const response = await fetch(githubFileUrl, {
@@ -190,19 +206,30 @@ app.get("/api/posts", requireLogin, async (req, res) => {
       Buffer.from(file.content, "base64").toString("utf8")
     );
 
-    res.json(posts);
+    if (!Array.isArray(posts)) {
+      throw new Error("Invalid posts.json format.");
+    }
+
+    res.json({ posts });
+
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Could not load posts from GitHub." });
+    console.error("LOAD ERROR:", error.message);
+
+    res.status(500).json({
+      error: "Could not load posts from GitHub."
+    });
   }
 });
 
+// PUBLISH POSTS
 app.put("/api/posts", requireLogin, async (req, res) => {
   try {
-    const posts = req.body;
+    const posts = req.body?.posts;
 
     if (!Array.isArray(posts)) {
-      return res.status(400).json({ error: "Posts must be an array." });
+      return res.status(400).json({
+        error: "Posts must be an array."
+      });
     }
 
     for (const post of posts) {
@@ -216,7 +243,7 @@ app.put("/api/posts", requireLogin, async (req, res) => {
         !Array.isArray(post.content)
       ) {
         return res.status(400).json({
-          error: "One or more articles have invalid fields."
+          error: "Invalid article fields."
         });
       }
     }
@@ -226,7 +253,9 @@ app.put("/api/posts", requireLogin, async (req, res) => {
     });
 
     if (!existingResponse.ok) {
-      throw new Error("Could not read existing posts.json from GitHub.");
+      throw new Error(
+        `GitHub read failed: ${existingResponse.status}`
+      );
     }
 
     const existingFile = await existingResponse.json();
@@ -253,21 +282,31 @@ app.put("/api/posts", requireLogin, async (req, res) => {
     const result = await updateResponse.json();
 
     if (!updateResponse.ok) {
-      console.error(result);
-      throw new Error("GitHub could not update posts.json.");
+      console.error("GITHUB ERROR:", result);
+
+      throw new Error(
+        "GitHub could not update posts.json."
+      );
     }
 
     res.json({
       success: true,
-      message: "Posts published to GitHub. Render auto-deploy will start.",
+      message: "Posts published successfully.",
       commit: result.commit?.sha
     });
+
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: error.message });
+    console.error("PUBLISH ERROR:", error.message);
+
+    res.status(500).json({
+      error: error.message
+    });
   }
 });
 
+// START SERVER
 app.listen(PORT, () => {
-  console.log(`Publisher API running on port ${PORT}`);
+  console.log(
+    `Publisher API running on port ${PORT}`
+  );
 });
