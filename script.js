@@ -1,55 +1,49 @@
 
-// MANDAR LEKHANI WEBSITE
+document.addEventListener("DOMContentLoaded", function () {
 
-let currentLanguage = "mr";
+  const languageButton = document.getElementById("languageToggle");
 
-const languageToggle = document.getElementById("languageToggle");
+  if (!languageButton) {
+    console.error("Language button not found!");
+    return;
+  }
 
-function setLanguage(language) {
-  currentLanguage = language;
+  let currentLanguage = "mr";
 
-  document.documentElement.lang = language;
+  function changeLanguage(language) {
 
-  // Change all translated text
-  document.querySelectorAll("[data-mr][data-en]").forEach(function(element) {
-    element.textContent = element.getAttribute("data-" + language);
+    currentLanguage = language;
+
+    document.documentElement.lang = language;
+
+    const elements = document.querySelectorAll("[data-mr][data-en]");
+
+    elements.forEach(function (element) {
+      element.textContent = element.getAttribute("data-" + language);
+    });
+
+    languageButton.textContent =
+      language === "mr" ? "English" : "मराठी";
+
+    console.log("Language changed to:", language);
+  }
+
+  languageButton.addEventListener("click", function () {
+
+    if (currentLanguage === "mr") {
+      changeLanguage("en");
+    } else {
+      changeLanguage("mr");
+    }
+
   });
 
-  // Update language button
-  languageToggle.textContent = language === "mr" ? "English" : "मराठी";
+  changeLanguage("mr");
 
-  // Save selected language
-  try {
-    localStorage.setItem("mandarLekhaniLanguage", language);
-  } catch (error) {
-    // Website still works if browser storage is unavailable
+  const year = document.getElementById("year");
+
+  if (year) {
+    year.textContent = new Date().getFullYear();
   }
-}
 
-// Language button click
-languageToggle.addEventListener("click", function() {
-  const newLanguage = currentLanguage === "mr" ? "en" : "mr";
-  setLanguage(newLanguage);
 });
-
-// Restore previously selected language
-try {
-  const savedLanguage = localStorage.getItem("mandarLekhaniLanguage");
-
-  if (savedLanguage === "en" || savedLanguage === "mr") {
-    setLanguage(savedLanguage);
-  } else {
-    setLanguage("mr");
-  }
-} catch (error) {
-  setLanguage("mr");
-}
-
-// Current year
-const yearElement = document.getElementById("year");
-
-if (yearElement) {
-  yearElement.textContent = new Date().getFullYear();
-}
-
-console.log("Welcome to Mandar Lekhani Website!");
