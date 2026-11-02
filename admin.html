@@ -2,344 +2,729 @@
 <!DOCTYPE html>
 <html lang="mr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Admin Dashboard | मंदार लेखणी</title>
-<style>
-*{box-sizing:border-box}
-body{margin:0;background:#f3f5f9;color:#172033;font-family:Arial,sans-serif}
-header{background:#071a35;color:white;padding:20px}
-header h2{margin:0}
-.container{width:min(900px,94%);margin:25px auto}
-.card{background:white;padding:22px;border-radius:12px;margin-bottom:20px;box-shadow:0 3px 15px #00000010}
-h3{color:#071a35}
-label{display:block;font-weight:bold;margin:14px 0 6px}
-input,select,textarea{width:100%;padding:12px;border:1px solid #ccd2dc;border-radius:7px;font-size:15px}
-textarea{min-height:100px;resize:vertical}
-button{padding:11px 15px;border:0;border-radius:7px;background:#071a35;color:white;cursor:pointer;margin:5px}
-button:hover{background:#c49a45;color:#071a35}
-.secondary{background:#e8edf5;color:#071a35}
-.danger{background:#a52626}
-.edit{background:#176b45}
-#preview{border:1px solid #ddd;padding:15px;border-radius:8px;line-height:1.7;overflow-wrap:anywhere}
-.status{padding:12px;background:#edf7ed;border-radius:7px;margin-top:12px}
-.article-item{padding:14px;border:1px solid #ddd;border-radius:9px;margin:12px 0}
-.article-item h4{margin:0 0 8px;color:#071a35}
-.actions{display:flex;flex-wrap:wrap;gap:5px}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | मंदार लेखणी</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #f3f5f9;
+      color: #222;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: auto;
+    }
+
+    header {
+      background: #101c35;
+      color: #d6b46a;
+      padding: 22px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 22px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px #0000000d;
+    }
+
+    h2, h3 {
+      color: #172746;
+    }
+
+    label {
+      display: block;
+      margin: 14px 0 6px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccd2dd;
+      border-radius: 7px;
+      font-size: 15px;
+      background: #fff;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    button {
+      background: #172746;
+      color: white;
+      border: none;
+      padding: 11px 17px;
+      margin: 10px 6px 0 0;
+      border-radius: 7px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    button:hover {
+      opacity: 0.88;
+    }
+
+    button.secondary {
+      background: #64748b;
+    }
+
+    button.danger {
+      background: #b42318;
+    }
+
+    button.gold {
+      background: #b58b3b;
+      color: #fff;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .status {
+      margin-top: 14px;
+      padding: 10px;
+      border-radius: 7px;
+      background: #f1f5f9;
+      overflow-wrap: anywhere;
+    }
+
+    .article-item {
+      border: 1px solid #e1e5eb;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 12px;
+    }
+
+    .article-item h3 {
+      margin-top: 0;
+    }
+
+    .muted {
+      color: #667085;
+      font-size: 13px;
+    }
+
+    .preview {
+      background: #fafafa;
+      border: 1px dashed #b9c2d0;
+      border-radius: 8px;
+      padding: 15px;
+      margin-top: 15px;
+      overflow-wrap: anywhere;
+    }
+
+    .top-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
+      .card {
+        padding: 15px;
+      }
+
+      button {
+        width: 100%;
+        margin-right: 0;
+      }
+    }
+  </style>
 </head>
+
 <body>
-
-<header>
-<h2>मंदार लेखणी – Admin Dashboard</h2>
-<p>Article Publishing Centre</p>
-</header>
-
 <div class="container">
 
-<div class="card">
-<h3 id="form-heading">नवीन लेख तयार करा</h3>
+  <header>
+    <h1>मंदार लेखणी</h1>
+    <p>Admin Dashboard | Article Management & Publishing</p>
+  </header>
 
-<label>लेखाचे शीर्षक</label>
-<input id="title" placeholder="लेखाचे शीर्षक">
+  <!-- LOGIN -->
+  <section class="card" id="login-card">
+    <h2>Admin Login</h2>
 
-<label>Category</label>
-<select id="category">
-<option>Cyber Security</option>
-<option>Cyber Law</option>
-<option>Digital Forensics</option>
-<option>Marathi Literature</option>
-<option>Poetry</option>
-<option>Technology</option>
-<option>English Articles</option>
-</select>
+    <label for="admin-password">Admin Password</label>
+    <input
+      type="password"
+      id="admin-password"
+      placeholder="तुमचा Admin Password"
+      autocomplete="current-password"
+    >
 
-<label>तारीख</label>
-<input type="date" id="date">
+    <button onclick="adminLogin()">Login</button>
+    <div id="login-status" class="status" aria-live="polite"></div>
+  </section>
 
-<label>लेखक</label>
-<input id="author" value="मंदार कारंडे">
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="hidden">
 
-<label>Image URL (ऐच्छिक)</label>
-<input id="image" placeholder="https://example.com/image.jpg">
+    <section class="card">
+      <h2>Dashboard</h2>
+      <p>तुमच्या वेबसाइटवरील लेख येथे व्यवस्थापित करा.</p>
 
-<label>लेखाचा परिचय</label>
-<textarea id="excerpt" placeholder="लेखाचा थोडक्यात परिचय"></textarea>
+      <div class="top-actions">
+        <button onclick="loadExisting(true)">Refresh Articles</button>
+        <button class="secondary" onclick="adminLogout()">Logout</button>
+      </div>
 
-<label>संपूर्ण लेख – प्रत्येक परिच्छेदामध्ये रिकामी ओळ ठेवा</label>
-<textarea id="content" rows="10" placeholder="पहिला परिच्छेद...
+      <div id="status" class="status" aria-live="polite">
+        Dashboard तयार आहे.
+      </div>
+    </section>
 
-दुसरा परिच्छेद..."></textarea>
+    <!-- ARTICLE FORM -->
+    <section class="card">
+      <h2 id="form-heading">नवीन लेख तयार करा</h2>
 
-<button onclick="previewArticle()">Preview</button>
-<button onclick="saveArticle()">लेख Save करा</button>
-<button class="secondary" onclick="clearForm()">Clear</button>
-<button class="secondary" id="cancel-edit" onclick="cancelEdit()" hidden>Cancel Edit</button>
-</div>
+      <form id="article-form">
 
-<div class="card">
-<h3>लेखाचा Preview</h3>
-<div id="preview">येथे लेखाचा Preview दिसेल.</div>
-</div>
+        <label for="article-title">लेखाचे शीर्षक *</label>
+        <input
+          type="text"
+          id="article-title"
+          required
+          placeholder="लेखाचे शीर्षक"
+        >
 
-<div class="card">
-<h3>Published / Loaded Articles</h3>
-<input id="article-search" placeholder="लेख शोधा..." oninput="renderArticles()">
-<div id="article-list">लेख Load होत आहेत...</div>
-</div>
+        <label for="article-category">Category *</label>
+        <select id="article-category" required>
+          <option value="Cyber Security">Cyber Security</option>
+          <option value="Cyber Law">Cyber Law</option>
+          <option value="Digital Forensics">Digital Forensics</option>
+          <option value="Marathi Literature">Marathi Literature</option>
+          <option value="Poetry">Poetry</option>
+          <option value="Technology">Technology</option>
+          <option value="Personal">Personal</option>
+        </select>
 
-<div class="card">
-<h3>Publishing</h3>
-<p>बदललेली posts.json डाउनलोड करून GitHub वरील जुनी फाइल Replace करा आणि Commit करा.</p>
-<button onclick="downloadJSON()">Download posts.json</button>
-<button class="secondary" onclick="loadExisting()">जुने लेख पुन्हा Load करा</button>
-<div id="status"></div>
-</div>
+        <label for="article-date">Date *</label>
+        <input type="date" id="article-date" required>
 
+        <label for="article-author">Author *</label>
+        <input
+          type="text"
+          id="article-author"
+          value="मंदार कारंडे"
+          required
+        >
+
+        <label for="article-image">Image URL (Optional)</label>
+        <input
+          type="url"
+          id="article-image"
+          placeholder="https://example.com/image.jpg"
+        >
+
+        <label for="article-excerpt">Short Description *</label>
+        <textarea
+          id="article-excerpt"
+          required
+          placeholder="लेखाचा छोटा परिचय लिहा..."
+        ></textarea>
+
+        <label for="article-content">
+          Article Content *
+        </label>
+        <textarea
+          id="article-content"
+          required
+          style="min-height:220px"
+          placeholder="लेखाचे पूर्ण लिखाण येथे करा.
+
+प्रत्येक नवीन परिच्छेदानंतर एक रिकामी ओळ ठेवा."
+        ></textarea>
+
+        <div class="top-actions">
+          <button type="button" onclick="previewArticle()">
+            Preview
+          </button>
+
+          <button type="submit" class="gold" id="save-button">
+            Save Article
+          </button>
+
+          <button
+            type="button"
+            class="secondary"
+            onclick="clearForm()"
+          >
+            Clear Form
+          </button>
+        </div>
+
+      </form>
+
+      <div id="preview-box" class="preview hidden"></div>
+    </section>
+
+    <!-- EXISTING ARTICLES -->
+    <section class="card">
+      <h2>Published / Existing Articles</h2>
+
+      <label for="article-search">Search Articles</label>
+      <input
+        type="search"
+        id="article-search"
+        placeholder="लेखाचे शीर्षक किंवा Category शोधा..."
+        oninput="renderArticles()"
+      >
+
+      <div id="posts-list">
+        लेख Load होत आहेत...
+      </div>
+    </section>
+
+    <!-- PUBLISH -->
+    <section class="card">
+      <h2>Direct Publishing</h2>
+
+      <p>
+        Publish केल्यावर लेख थेट GitHub मधील posts.json मध्ये
+        Save होतील. त्यानंतर Render Auto Deploy सुरू होईल.
+      </p>
+
+      <button class="gold" onclick="publishPosts()">
+        Publish to Website
+      </button>
+
+      <div id="publish-status" class="status" aria-live="polite">
+        Publish करण्यापूर्वी लेख तपासा.
+      </div>
+    </section>
+
+  </div>
 </div>
 
 <script>
-"use strict";
+  // Backend API URL
+  const API_URL = "https://mandar-lekhani-api.onrender.com";
 
-let posts = [];
-let editingId = null;
-let dirty = false;
+  let posts = [];
+  let editingId = null;
+  let dirty = false;
 
-const $ = id => document.getElementById(id);
+  const $ = (id) => document.getElementById(id);
 
-$("date").value = new Date().toISOString().slice(0,10);
-
-function status(message) {
-  $("status").textContent = message;
-  $("status").className = "status";
-}
-
-function makePost() {
-  const title = $("title").value.trim();
-  const content = $("content").value
-    .split(/\n\s*\n/)
-    .map(p => p.trim())
-    .filter(Boolean);
-
-  if (!title || !content.length) {
-    alert("लेखाचे शीर्षक आणि संपूर्ण लेख भरा.");
-    return null;
+  function setStatus(message, element = "status") {
+    const box = $(element);
+    if (box) box.textContent = message;
   }
 
-  const image = $("image").value.trim();
-  if (image && !/^https?:\/\/\S+$/i.test(image)) {
-    alert("Image URL योग्य HTTP किंवा HTTPS लिंक असावी.");
-    return null;
+  async function apiRequest(path, options = {}) {
+    const response = await fetch(API_URL + path, {
+      ...options,
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        ...(options.headers || {})
+      }
+    });
+
+    const data = await response.json().catch(() => ({}));
+
+    if (!response.ok) {
+      throw new Error(data.error || "Request failed: " + response.status);
+    }
+
+    return data;
   }
 
-  return {
-    id: editingId || ("article-" + Date.now()),
-    title,
-    category: $("category").value,
-    date: $("date").value,
-    author: $("author").value.trim() || "मंदार कारंडे",
-    image,
-    excerpt: $("excerpt").value.trim(),
-    content
-  };
-}
+  // LOGIN
+  async function adminLogin() {
+    const password = $("admin-password").value;
 
-function previewArticle() {
-  const post = makePost();
-  if (!post) return;
+    if (!password) {
+      setStatus("कृपया Admin Password टाका.", "login-status");
+      return;
+    }
 
-  const box = $("preview");
-  box.replaceChildren();
+    setStatus("Login होत आहे...", "login-status");
 
-  const heading = document.createElement("h2");
-  heading.textContent = post.title;
-  box.appendChild(heading);
+    try {
+      await apiRequest("/api/login", {
+        method: "POST",
+        body: JSON.stringify({ password })
+      });
 
-  const meta = document.createElement("p");
-  meta.textContent = post.category + " | " + post.date + " | " + post.author;
-  box.appendChild(meta);
+      $("admin-password").value = "";
+      $("login-card").classList.add("hidden");
+      $("dashboard").classList.remove("hidden");
 
-  const excerpt = document.createElement("p");
-  excerpt.textContent = post.excerpt;
-  box.appendChild(excerpt);
-
-  if (post.image) {
-    const img = document.createElement("img");
-    img.src = post.image;
-    img.alt = post.title;
-    img.style.maxWidth = "100%";
-    img.onerror = () => img.remove();
-    box.appendChild(img);
+      await loadExisting(true);
+      setStatus("Login यशस्वी झाले.");
+    } catch (error) {
+      setStatus("Login Error: " + error.message, "login-status");
+    }
   }
 
-  post.content.forEach(text => {
-    const p = document.createElement("p");
-    p.textContent = text;
-    box.appendChild(p);
-  });
-}
+  // LOGOUT
+  async function adminLogout() {
+    try {
+      await apiRequest("/api/logout", {
+        method: "POST",
+        body: JSON.stringify({})
+      });
+    } catch (error) {
+      console.error(error);
+    }
 
-async function loadExisting() {
-  if (dirty && !confirm("तुमचे न जतन केलेले बदल रद्द करून JSON पुन्हा Load करायचे?")) return;
-
-  try {
-    const response = await fetch("./posts.json?refresh=" + Date.now());
-    if (!response.ok) throw new Error("Load failed");
-
-    const data = await response.json();
-    if (!Array.isArray(data)) throw new Error("Invalid JSON");
-
-    posts = data;
+    posts = [];
     editingId = null;
     dirty = false;
+
+    $("dashboard").classList.add("hidden");
+    $("login-card").classList.remove("hidden");
+    $("posts-list").textContent = "";
     clearForm();
-    renderArticles();
-    status(posts.length + " लेख Load झाले.");
-  } catch (error) {
-    status("लेख Load झाले नाहीत. Dashboard वेबसाइटवरून उघडा आणि posts.json तपासा.");
-  }
-}
-
-function saveArticle() {
-  const post = makePost();
-  if (!post) return;
-
-  const existingIndex = posts.findIndex(p => p.id === post.id);
-
-  if (existingIndex >= 0) {
-    posts[existingIndex] = post;
-    status("लेख Update झाला. Download posts.json करा.");
-  } else {
-    if (posts.some(p => p.title === post.title) &&
-        !confirm("याच शीर्षकाचा लेख आहे. तरी नवीन लेख जोडायचा?")) return;
-
-    posts.push(post);
-    status("नवीन लेख जोडला. Download posts.json करा.");
+    setStatus("Logout झाले.", "login-status");
   }
 
-  dirty = true;
-  editingId = null;
-  clearForm();
-  renderArticles();
-}
+  // CHECK SESSION
+  async function checkSession() {
+    try {
+      await apiRequest("/api/session");
 
-function editArticle(id) {
-  const post = posts.find(p => p.id === id);
-  if (!post) return;
+      $("login-card").classList.add("hidden");
+      $("dashboard").classList.remove("hidden");
 
-  editingId = id;
-  $("title").value = post.title || "";
-  $("category").value = post.category || "Cyber Security";
-  $("date").value = post.date || "";
-  $("author").value = post.author || "मंदार कारंडे";
-  $("image").value = post.image || "";
-  $("excerpt").value = post.excerpt || "";
-  $("content").value = (post.content || []).join("\n\n");
-
-  $("form-heading").textContent = "लेख Edit करा";
-  $("cancel-edit").hidden = false;
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-function cancelEdit() {
-  editingId = null;
-  clearForm();
-}
-
-function deleteArticle(id) {
-  const post = posts.find(p => p.id === id);
-  if (!post) return;
-
-  if (!confirm('"' + post.title + '" हा लेख Delete करायचा आहे का?')) return;
-
-  posts = posts.filter(p => p.id !== id);
-  if (editingId === id) cancelEdit();
-
-  dirty = true;
-  renderArticles();
-  status("लेख यादीतून Delete झाला. कायमचा बदल करण्यासाठी Download आणि GitHub Commit करा.");
-}
-
-function renderArticles() {
-  const list = $("article-list");
-  const query = $("article-search").value.trim().toLocaleLowerCase();
-
-  list.replaceChildren();
-
-  const filtered = posts.filter(p =>
-    [p.title,p.category,p.author].join(" ").toLocaleLowerCase().includes(query)
-  );
-
-  if (!filtered.length) {
-    list.textContent = "लेख सापडला नाही.";
-    return;
+      await loadExisting(true);
+    } catch (error) {
+      $("dashboard").classList.add("hidden");
+      $("login-card").classList.remove("hidden");
+    }
   }
 
-  filtered.forEach(post => {
-    const item = document.createElement("div");
-    item.className = "article-item";
+  // LOAD POSTS FROM GITHUB THROUGH API
+  async function loadExisting(force = false) {
+    if (dirty && !force) {
+      const confirmReload = confirm(
+        "तुमचे काही बदल Save केलेले नाहीत. Reload करायचे?"
+      );
 
-    const heading = document.createElement("h4");
-    heading.textContent = post.title;
-    item.appendChild(heading);
+      if (!confirmReload) return;
+    }
 
-    const meta = document.createElement("p");
-    meta.textContent = post.category + " | " + post.date;
-    item.appendChild(meta);
+    setStatus("लेख Load होत आहेत...");
 
-    const actions = document.createElement("div");
-    actions.className = "actions";
+    try {
+      const data = await apiRequest("/api/posts");
 
-    const edit = document.createElement("button");
-    edit.className = "edit";
-    edit.textContent = "Edit";
-    edit.onclick = () => editArticle(post.id);
+      if (!Array.isArray(data.posts)) {
+        throw new Error("API कडून योग्य posts list मिळाली नाही.");
+      }
 
-    const del = document.createElement("button");
-    del.className = "danger";
-    del.textContent = "Delete";
-    del.onclick = () => deleteArticle(post.id);
+      posts = data.posts;
+      dirty = false;
+      renderArticles();
 
-    actions.append(edit,del);
-    item.appendChild(actions);
-    list.appendChild(item);
+      setStatus(posts.length + " लेख यशस्वीपणे Load झाले.");
+    } catch (error) {
+      setStatus("Load Error: " + error.message);
+    }
+  }
+
+  // CREATE POST OBJECT
+  function makePost() {
+    const title = $("article-title").value.trim();
+    const category = $("article-category").value;
+    const date = $("article-date").value;
+    const author = $("article-author").value.trim();
+    const image = $("article-image").value.trim();
+    const excerpt = $("article-excerpt").value.trim();
+    const contentText = $("article-content").value.trim();
+
+    if (!title || !date || !author || !excerpt || !contentText) {
+      throw new Error("कृपया सर्व आवश्यक माहिती भरा.");
+    }
+
+    const content = contentText
+      .split(/\n\s*\n/)
+      .map(item => item.trim())
+      .filter(Boolean);
+
+    const id = editingId || (
+      "article-" + Date.now()
+    );
+
+    return {
+      id,
+      title,
+      category,
+      date,
+      author,
+      image,
+      excerpt,
+      content
+    };
+  }
+
+  // SAVE ARTICLE
+  $("article-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    saveArticle();
   });
-}
 
-function downloadJSON() {
-  if (!posts.length) {
-    alert("प्रथम जुने लेख Load करा.");
-    return;
+  function saveArticle() {
+    try {
+      const post = makePost();
+
+      if (editingId) {
+        const index = posts.findIndex(p => p.id === editingId);
+
+        if (index === -1) {
+          throw new Error("Edit करण्यासाठी लेख सापडला नाही.");
+        }
+
+        posts[index] = post;
+        setStatus("लेख Update झाला. आता Publish to Website करा.");
+      } else {
+        posts.unshift(post);
+        setStatus("नवीन लेख Add झाला. आता Publish to Website करा.");
+      }
+
+      dirty = true;
+      renderArticles();
+      clearForm();
+
+    } catch (error) {
+      setStatus(error.message);
+    }
   }
 
-  const blob = new Blob(
-    [JSON.stringify(posts,null,2)],
-    {type:"application/json"}
-  );
+  // PREVIEW
+  function previewArticle() {
+    try {
+      const post = makePost();
+      const box = $("preview-box");
 
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "posts.json";
-  a.click();
+      box.replaceChildren();
 
-  setTimeout(() => URL.revokeObjectURL(url),1000);
+      const title = document.createElement("h2");
+      title.textContent = post.title;
+      box.appendChild(title);
 
-  dirty = false;
-  status("posts.json डाउनलोड झाले. GitHub वर Replace करून Commit करा.");
-}
+      const details = document.createElement("p");
+      details.textContent =
+        post.category + " | " + post.date + " | " + post.author;
+      box.appendChild(details);
 
-function clearForm() {
-  ["title","image","excerpt","content"].forEach(id => $(id).value = "");
-  $("date").value = new Date().toISOString().slice(0,10);
-  $("author").value = "मंदार कारंडे";
-  $("category").value = "Cyber Security";
-  $("form-heading").textContent = "नवीन लेख तयार करा";
-  $("cancel-edit").hidden = true;
-  $("preview").textContent = "येथे लेखाचा Preview दिसेल.";
-}
+      const excerpt = document.createElement("p");
+      excerpt.textContent = post.excerpt;
+      box.appendChild(excerpt);
 
-loadExisting();
+      post.content.forEach(paragraph => {
+        const p = document.createElement("p");
+        p.textContent = paragraph;
+        box.appendChild(p);
+      });
+
+      box.classList.remove("hidden");
+
+    } catch (error) {
+      setStatus(error.message);
+    }
+  }
+
+  // EDIT ARTICLE
+  function editArticle(id) {
+    const post = posts.find(p => p.id === id);
+
+    if (!post) {
+      setStatus("लेख सापडला नाही.");
+      return;
+    }
+
+    editingId = id;
+
+    $("article-title").value = post.title || "";
+    $("article-category").value = post.category || "Cyber Security";
+    $("article-date").value = post.date || "";
+    $("article-author").value = post.author || "मंदार कारंडे";
+    $("article-image").value = post.image || "";
+    $("article-excerpt").value = post.excerpt || "";
+
+    $("article-content").value = Array.isArray(post.content)
+      ? post.content.join("\n\n")
+      : (post.content || "");
+
+    $("form-heading").textContent = "लेख Edit / Update करा";
+    $("save-button").textContent = "Update Article";
+    $("preview-box").classList.add("hidden");
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  // CANCEL / CLEAR FORM
+  function clearForm() {
+    $("article-form").reset();
+
+    $("article-author").value = "मंदार कारंडे";
+    $("article-date").value = new Date().toISOString().slice(0, 10);
+
+    editingId = null;
+
+    $("form-heading").textContent = "नवीन लेख तयार करा";
+    $("save-button").textContent = "Save Article";
+    $("preview-box").classList.add("hidden");
+  }
+
+  // DELETE ARTICLE
+  function deleteArticle(id) {
+    const post = posts.find(p => p.id === id);
+
+    if (!post) return;
+
+    const confirmed = confirm(
+      '"' + post.title + '" हा लेख Delete करायचा आहे का?'
+    );
+
+    if (!confirmed) return;
+
+    posts = posts.filter(p => p.id !== id);
+
+    if (editingId === id) {
+      clearForm();
+    }
+
+    dirty = true;
+    renderArticles();
+    setStatus("लेख Delete यादीतून काढला. बदल कायम करण्यासाठी Publish करा.");
+  }
+
+  // RENDER ARTICLES
+  function renderArticles() {
+    const list = $("posts-list");
+    const search = $("article-search").value.trim().toLowerCase();
+
+    list.replaceChildren();
+
+    const filtered = posts.filter(post => {
+      const text = [
+        post.title,
+        post.category,
+        post.author,
+        post.excerpt
+      ].join(" ").toLowerCase();
+
+      return text.includes(search);
+    });
+
+    if (filtered.length === 0) {
+      list.textContent = "कोणतेही लेख सापडले नाहीत.";
+      return;
+    }
+
+    filtered.forEach(post => {
+      const item = document.createElement("div");
+      item.className = "article-item";
+
+      const title = document.createElement("h3");
+      title.textContent = post.title || "Untitled";
+      item.appendChild(title);
+
+      const details = document.createElement("p");
+      details.className = "muted";
+      details.textContent =
+        (post.category || "") + " | " +
+        (post.date || "") + " | " +
+        (post.author || "");
+      item.appendChild(details);
+
+      const excerpt = document.createElement("p");
+      excerpt.textContent = post.excerpt || "";
+      item.appendChild(excerpt);
+
+      const editButton = document.createElement("button");
+      editButton.textContent = "Edit";
+      editButton.addEventListener("click", () => editArticle(post.id));
+      item.appendChild(editButton);
+
+      const deleteButton = document.createElement("button");
+      deleteButton.textContent = "Delete";
+      deleteButton.className = "danger";
+      deleteButton.addEventListener("click", () => deleteArticle(post.id));
+      item.appendChild(deleteButton);
+
+      list.appendChild(item);
+    });
+  }
+
+  // DIRECT PUBLISH TO GITHUB
+  async function publishPosts() {
+    if (editingId) {
+      setStatus(
+        "सध्या Edit सुरू आहे. आधी Update Article करा.",
+        "publish-status"
+      );
+      return;
+    }
+
+    if (!dirty) {
+      setStatus(
+        "Publish करण्यासाठी कोणतेही नवीन बदल नाहीत.",
+        "publish-status"
+      );
+      return;
+    }
+
+    const confirmed = confirm(
+      posts.length + " लेख वेबसाइटवर Publish करायचे आहेत का?"
+    );
+
+    if (!confirmed) return;
+
+    setStatus("GitHub वर Publish होत आहे...", "publish-status");
+
+    try {
+      await apiRequest("/api/posts", {
+        method: "PUT",
+        body: JSON.stringify({ posts })
+      });
+
+      dirty = false;
+
+      setStatus(
+        "यशस्वी! लेख GitHub वर Save झाले. Render Auto Deploy सुरू होईल.",
+        "publish-status"
+      );
+
+    } catch (error) {
+      setStatus(
+        "Publish Error: " + error.message,
+        "publish-status"
+      );
+    }
+  }
+
+  // INITIAL PAGE LOAD
+  $("article-date").value = new Date().toISOString().slice(0, 10);
+  checkSession();
 </script>
+
 </body>
 </html>
