@@ -1,13 +1,20 @@
 
 <!DOCTYPE html>
 <html lang="mr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>मंदार लेखणी | Mandar Lekhani</title>
+  <title>मंदार लेखणी | Mandar Lekhani - Official Website</title>
 
-  <meta name="description" content="मंदार लेखणी - मंदार कारंडे यांचे मराठी साहित्य, कविता, पुस्तके आणि सायबर सुरक्षा विषयक लेखन.">
+  <meta name="description" content="Official website of Mandar Karande (Mandar Lekhani) - Marathi Literature, Poetry, Books, Cybersecurity, Cyber Law, Digital Forensics and Content Writing.">
+
+  <meta name="keywords" content="Mandar Karande, Mandar Lekhani, Marathi Writer, Cybersecurity Writer, Cyber Law, Digital Forensics, Marathi Poetry, Content Writing">
+
+  <meta name="author" content="Mandar Karande">
+
+  <meta name="theme-color" content="#071a35">
 
   <link rel="stylesheet" href="./style.css">
 </head>
@@ -16,25 +23,46 @@
 
   <!-- HEADER -->
   <header class="header">
+
     <div class="container nav-container">
 
       <a href="#home" class="brand">
+
         <img
           src="./ChatGPT%20Image%20Nov%202,%202026,%2012_28_23%20PM.png"
           alt="Mandar Lekhani Logo"
           class="logo"
         >
+
         <span>मंदार लेखणी</span>
+
       </a>
 
-      <nav class="navigation">
+      <button class="menu-toggle" id="menuToggle"
+        aria-label="Open navigation" aria-expanded="false">
+        ☰
+      </button>
+
+      <nav class="navigation" id="mainNavigation">
+
         <a href="#home" data-mr="मुख्यपृष्ठ" data-en="Home">मुख्यपृष्ठ</a>
-        <a href="#about" data-mr="माझ्याविषयी" data-en="About">माझ्याविषयी</a>
+
+        <a href="#about" data-mr="लेखक परिचय" data-en="About Author">लेखक परिचय</a>
+
+        <a href="#education" data-mr="शिक्षण व अनुभव" data-en="Education & Experience">शिक्षण व अनुभव</a>
+
         <a href="#books" data-mr="माझी पुस्तके" data-en="My Books">माझी पुस्तके</a>
+
         <a href="#literature" data-mr="मराठी साहित्य" data-en="Literature">मराठी साहित्य</a>
+
         <a href="#cyber" data-mr="सायबर लेखन" data-en="Cyber Writing">सायबर लेखन</a>
+
+        <a href="#services" data-mr="लेखन सेवा" data-en="Writing Services">लेखन सेवा</a>
+
         <a href="#blog" data-mr="ब्लॉग" data-en="Blog">ब्लॉग</a>
+
         <a href="#contact" data-mr="संपर्क" data-en="Contact">संपर्क</a>
+
       </nav>
 
       <button id="languageToggle" class="language-btn" type="button">
@@ -42,24 +70,30 @@
       </button>
 
     </div>
+
   </header>
+
 
   <main>
 
     <!-- HOME -->
+
     <section id="home" class="hero">
+
       <div class="container hero-content">
 
         <img
           src="./ChatGPT%20Image%20Nov%202,%202026,%2012_28_23%20PM.png"
-          alt="मंदार लेखणी"
+          alt="Mandar Lekhani"
           class="hero-logo"
         >
 
         <p class="eyebrow"
-           data-mr="लेखक | कवी | सायबर सुरक्षा अभ्यासक"
-           data-en="Writer | Poet | Cybersecurity Enthusiast">
-          लेखक | कवी | सायबर सुरक्षा अभ्यासक
+          data-mr="लेखक | कवी | व्यवसाय विश्लेषक | सायबर सुरक्षा अभ्यासक"
+          data-en="Writer | Poet | Business Analyst | Cybersecurity Enthusiast">
+
+          लेखक | कवी | व्यवसाय विश्लेषक | सायबर सुरक्षा अभ्यासक
+
         </p>
 
         <h1 data-mr="मंदार लेखणी" data-en="Mandar Lekhani">
@@ -69,319 +103,987 @@
         <h2
           data-mr="शब्दांतून मनाचा प्रवास..."
           data-en="A Journey of Emotions Through Words...">
+
           शब्दांतून मनाचा प्रवास...
+
         </h2>
 
         <p
-          data-mr="साहित्य, कविता, सायबर सुरक्षा आणि डिजिटल विश्वास यांचा एकत्रित प्रवास."
-          data-en="A journey through literature, poetry, cybersecurity and digital trust.">
-          साहित्य, कविता, सायबर सुरक्षा आणि डिजिटल विश्वास यांचा एकत्रित प्रवास.
+          data-mr="साहित्य, तंत्रज्ञान, सायबर सुरक्षा आणि डिजिटल विश्वास यांचा एकत्रित प्रवास."
+          data-en="A journey through literature, technology, cybersecurity and digital trust.">
+
+          साहित्य, तंत्रज्ञान, सायबर सुरक्षा आणि डिजिटल विश्वास यांचा एकत्रित प्रवास.
+
         </p>
 
-        <a href="#books" class="btn"
-           data-mr="माझी पुस्तके पाहा"
-           data-en="Explore My Books">
-          माझी पुस्तके पाहा
-        </a>
+        <div class="hero-buttons">
+
+          <a href="#books" class="btn"
+            data-mr="माझी पुस्तके"
+            data-en="Explore My Books">
+
+            माझी पुस्तके
+
+          </a>
+
+          <a href="#about" class="btn btn-outline"
+            data-mr="लेखक परिचय"
+            data-en="About Author">
+
+            लेखक परिचय
+
+          </a>
+
+        </div>
 
       </div>
+
     </section>
 
-    <!-- ABOUT -->
+
+    <!-- ABOUT AUTHOR -->
+
     <section id="about" class="section">
+
       <div class="container">
 
         <h2 class="section-title"
-            data-mr="माझ्याविषयी"
-            data-en="About the Author">
-          माझ्याविषयी
+          data-mr="लेखक परिचय"
+          data-en="About the Author">
+
+          लेखक परिचय
+
         </h2>
 
-        <div class="about-card">
+        <div class="author-layout">
 
-          <h3 data-mr="मंदार कारंडे" data-en="Mandar Karande">
-            मंदार कारंडे
-          </h3>
+          <div class="author-photo">
 
-          <p
-            data-mr="मंदार कारंडे हे मराठी साहित्य, कविता, सायबर सुरक्षा आणि सायबर कायदा या विषयांमध्ये रुची असलेले लेखक आहेत. 'मंदार लेखणी' या नावाने ते आपले साहित्य आणि विचार वाचकांपर्यंत पोहोचवतात."
-            data-en="Mandar Karande is a writer interested in Marathi literature, poetry, cybersecurity and cyber law. Under the name 'Mandar Lekhani', he shares his writing and ideas with readers.">
-            मंदार कारंडे हे मराठी साहित्य, कविता, सायबर सुरक्षा आणि सायबर कायदा या विषयांमध्ये रुची असलेले लेखक आहेत. 'मंदार लेखणी' या नावाने ते आपले साहित्य आणि विचार वाचकांपर्यंत पोहोचवतात.
+            <img
+              src="./MANDAR%20PHOTO.jpg"
+              alt="लेखक मंदार कारंडे"
+              loading="lazy"
+            >
+
+            <h3>मंदार कारंडे</h3>
+
+            <p>मंदार लेखणी</p>
+
+          </div>
+
+
+          <div class="author-content">
+
+            <h3
+              data-mr="लेखक | कवी | तंत्रज्ञान व्यावसायिक"
+              data-en="Writer | Poet | Technology Professional">
+
+              लेखक | कवी | तंत्रज्ञान व्यावसायिक
+
+            </h3>
+
+            <p
+              data-mr="मंदार कारंडे हे मराठी साहित्य, कविता, सायबर सुरक्षा, डिजिटल फॉरेन्सिक्स, सायबर कायदा आणि ई-गव्हर्नन्स या क्षेत्रांमध्ये रुची असलेले लेखक व तंत्रज्ञान व्यावसायिक आहेत. 'मंदार लेखणी' या नावाने ते आपले साहित्य आणि विचार वाचकांपर्यंत पोहोचवतात."
+              data-en="Mandar Karande is a writer and technology professional interested in Marathi literature, poetry, cybersecurity, digital forensics, cyber law and e-governance. He shares his writing and ideas under the name 'Mandar Lekhani'.">
+
+              मंदार कारंडे हे मराठी साहित्य, कविता, सायबर सुरक्षा, डिजिटल फॉरेन्सिक्स, सायबर कायदा आणि ई-गव्हर्नन्स या क्षेत्रांमध्ये रुची असलेले लेखक व तंत्रज्ञान व्यावसायिक आहेत. 'मंदार लेखणी' या नावाने ते आपले साहित्य आणि विचार वाचकांपर्यंत पोहोचवतात.
+
+            </p>
+
+            <p
+              data-mr="त्यांनी MCA पूर्ण केले असून Cyber Law मध्ये Diploma प्राप्त केला आहे. सध्या ते LL.B. चे शिक्षण घेत आहेत आणि Ph.D. संशोधनाच्या दिशेने कार्यरत आहेत."
+              data-en="He has completed MCA and a Diploma in Cyber Law. He is currently pursuing LL.B. and working towards Ph.D. research.">
+
+              त्यांनी MCA पूर्ण केले असून Cyber Law मध्ये Diploma प्राप्त केला आहे. सध्या ते LL.B. चे शिक्षण घेत आहेत आणि Ph.D. संशोधनाच्या दिशेने कार्यरत आहेत.
+
+            </p>
+
+            <p
+              data-mr="Business Analysis आणि E-Governance क्षेत्रातील सुमारे १० वर्षांचा अनुभव त्यांच्या व्यावसायिक प्रवासाचा महत्त्वाचा भाग आहे."
+              data-en="Approximately 10 Years of Experience in Business Analysis & E-Governance.">
+
+              Business Analysis आणि E-Governance क्षेत्रातील सुमारे १० वर्षांचा अनुभव त्यांच्या व्यावसायिक प्रवासाचा महत्त्वाचा भाग आहे.
+
+            </p>
+
+            <p
+              data-mr="त्यांना डिजिटल प्रणाली, ERP, Business Process Management, डिजिटल परिवर्तन, डिजिटल पुराव्यांची अखंडता, Chain of Custody आणि सायबर गुन्हे प्रतिबंध या विषयांमध्ये विशेष रुची आहे."
+              data-en="His professional and research interests include ERP, Business Process Management, digital transformation, digital evidence integrity, chain of custody and cybercrime prevention.">
+
+              त्यांना डिजिटल प्रणाली, ERP, Business Process Management, डिजिटल परिवर्तन, डिजिटल पुराव्यांची अखंडता, Chain of Custody आणि सायबर गुन्हे प्रतिबंध या विषयांमध्ये विशेष रुची आहे.
+
+            </p>
+
+            <p
+              data-mr="त्यांच्या लेखनाचा उद्देश साहित्याच्या माध्यमातून भावना व्यक्त करणे आणि तंत्रज्ञान व कायद्याविषयी सामान्य नागरिकांमध्ये जागरूकता निर्माण करणे हा आहे."
+              data-en="His writing aims to express human emotions through literature and create awareness about technology and law.">
+
+              त्यांच्या लेखनाचा उद्देश साहित्याच्या माध्यमातून भावना व्यक्त करणे आणि तंत्रज्ञान व कायद्याविषयी सामान्य नागरिकांमध्ये जागरूकता निर्माण करणे हा आहे.
+
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- EDUCATION AND EXPERIENCE -->
+
+    <section id="education" class="section light-section">
+
+      <div class="container">
+
+        <h2 class="section-title"
+          data-mr="शिक्षण आणि व्यावसायिक अनुभव"
+          data-en="Education & Professional Experience">
+
+          शिक्षण आणि व्यावसायिक अनुभव
+
+        </h2>
+
+
+        <div class="content-grid">
+
+          <div class="content-card">
+
+            <div class="card-icon">🎓</div>
+
+            <h3>Education</h3>
+
+            <ul class="info-list">
+
+              <li>
+                <strong>MCA</strong>
+                <span>Completed</span>
+              </li>
+
+              <li>
+                <strong>Diploma in Cyber Law</strong>
+                <span>Completed – Shivaji University</span>
+              </li>
+
+              <li>
+                <strong>LL.B.</strong>
+                <span>Appearing</span>
+              </li>
+
+              <li>
+                <strong>Ph.D.</strong>
+                <span>Research in Progress</span>
+              </li>
+
+            </ul>
+
+          </div>
+
+
+          <div class="content-card">
+
+            <div class="card-icon">💼</div>
+
+            <h3>Professional Experience</h3>
+
+            <h4 class="experience-number">
+              Approximately 10 Years
+            </h4>
+
+            <p
+              data-mr="Business Analysis आणि E-Governance क्षेत्रातील अनुभव."
+              data-en="Experience in Business Analysis & E-Governance.">
+
+              Business Analysis आणि E-Governance क्षेत्रातील अनुभव.
+
+            </p>
+
+            <ul class="info-list">
+
+              <li>Business Analysis</li>
+              <li>ERP Solutions</li>
+              <li>E-Governance Projects</li>
+              <li>Business Process Management</li>
+              <li>Digital Transformation</li>
+              <li>Requirement Analysis</li>
+
+            </ul>
+
+          </div>
+
+
+          <div class="content-card">
+
+            <div class="card-icon">🔬</div>
+
+            <h3>Research Interests</h3>
+
+            <ul class="info-list">
+
+              <li>Blockchain Technology</li>
+              <li>Artificial Intelligence</li>
+              <li>Digital Forensics</li>
+              <li>Cybersecurity</li>
+              <li>Land Records Integrity</li>
+              <li>Digital Evidence Validation</li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+
+        <div class="research-box">
+
+          <h3>Research Area</h3>
+
+          <p>
+            A Blockchain Integrated AI Augmented Digital Forensics Framework for Integrity Validation and Fraud Detection in Land Records.
           </p>
 
-          <p
-            data-mr="लेखनासोबतच डिजिटल फॉरेन्सिक्स, डिजिटल पुरावे, सायबर गुन्हे प्रतिबंध आणि तंत्रज्ञानाच्या सामाजिक उपयोगाविषयी त्यांचा अभ्यास सुरू आहे."
-            data-en="Alongside writing, he studies digital forensics, digital evidence, cybercrime prevention and the social applications of technology.">
-            लेखनासोबतच डिजिटल फॉरेन्सिक्स, डिजिटल पुरावे, सायबर गुन्हे प्रतिबंध आणि तंत्रज्ञानाच्या सामाजिक उपयोगाविषयी त्यांचा अभ्यास सुरू आहे.
+          <p>
+            Research interest: SecureLand Maharashtra.
           </p>
 
         </div>
+
       </div>
+
     </section>
 
+
     <!-- BOOKS -->
-    <section id="books" class="section books-section">
+
+    <section id="books" class="section">
+
       <div class="container">
 
         <h2 class="section-title"
-            data-mr="माझी पुस्तके"
-            data-en="My Books">
-          माझी पुस्तके
+          data-mr="माझी प्रकाशित पुस्तके"
+          data-en="My Published Books">
+
+          माझी प्रकाशित पुस्तके
+
         </h2>
 
         <p class="section-intro"
-           data-mr="माझ्या लेखणीतून साकारलेली पुस्तके."
-           data-en="Books created through my writing.">
-          माझ्या लेखणीतून साकारलेली पुस्तके.
+          data-mr="मंदार लेखणीच्या लेखणीतून साकारलेली पुस्तके."
+          data-en="Books written and published under Mandar Lekhani.">
+
+          मंदार लेखणीच्या लेखणीतून साकारलेली पुस्तके.
+
         </p>
+
 
         <div class="books-grid">
 
+
           <!-- BOOK 1 -->
+
           <article class="book-card">
 
             <div class="book-cover">
+
               <img
                 src="./book.mana.jpg.jpg"
                 alt="मनाच्या पानावर उमटलेले शब्द"
                 loading="lazy"
               >
+
             </div>
 
             <h3>मनाच्या पानावर उमटलेले शब्द</h3>
 
             <p
-              data-mr="मनातील भावना आणि विचारांना कवितेच्या रूपात व्यक्त करणारा कवितासंग्रह."
-              data-en="A poetry collection expressing emotions and thoughts through words.">
-              मनातील भावना आणि विचारांना कवितेच्या रूपात व्यक्त करणारा कवितासंग्रह.
+              data-mr="मनातील भावना, अनुभव आणि विचारांना कवितेच्या माध्यमातून व्यक्त करणारा कवितासंग्रह."
+              data-en="A poetry collection expressing emotions, experiences and thoughts through words.">
+
+              मनातील भावना, अनुभव आणि विचारांना कवितेच्या माध्यमातून व्यक्त करणारा कवितासंग्रह.
+
             </p>
 
-            <a
-              href="https://pdfcart.in/p/mandar-lekhni-paperback-margins-fixed"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn book-btn">
-              पुस्तक खरेदी करा
-            </a>
+            <div class="purchase-buttons">
+
+              <a
+                href="https://pdfcart.in/p/mandar-lekhni-paperback-margins-fixed"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn purchase-btn">
+
+                PDFCart वर खरेदी
+
+              </a>
+
+              <a
+                href="https://hindavicreators.online/karandemandar180/product/manachya-panavar-umatalele-shabd"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn purchase-btn hindvi-btn">
+
+                Hindvi Creations वर खरेदी
+
+              </a>
+
+            </div>
 
           </article>
 
+
           <!-- BOOK 2 -->
+
           <article class="book-card">
 
             <div class="book-cover">
+
               <img
                 src="./book-kalalo.jpg.jpg"
                 alt="मी कधी कुणाला कळलो नाही"
                 loading="lazy"
               >
+
             </div>
 
             <h3>मी कधी कुणाला कळलो नाही</h3>
 
             <p
-              data-mr="मनातील न बोललेल्या भावना, नाती आणि आयुष्याचे अनुभव मांडणारे पुस्तक."
-              data-en="A book exploring unspoken emotions, relationships and life experiences.">
-              मनातील न बोललेल्या भावना, नाती आणि आयुष्याचे अनुभव मांडणारे पुस्तक.
+              data-mr="मनातील न बोललेल्या भावना, नाती आणि जीवनातील अनुभव व्यक्त करणारे पुस्तक."
+              data-en="A book about unspoken emotions, relationships and experiences of life.">
+
+              मनातील न बोललेल्या भावना, नाती आणि जीवनातील अनुभव व्यक्त करणारे पुस्तक.
+
             </p>
 
-            <a
-              href="https://pdfcart.in/p/pdf-107"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn book-btn">
-              पुस्तक खरेदी करा
-            </a>
+            <div class="purchase-buttons">
+
+              <a
+                href="https://pdfcart.in/p/pdf-107"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn purchase-btn">
+
+                PDFCart वर खरेदी
+
+              </a>
+
+              <a
+                href="https://hindavicreators.online/karandemandar180/product/mi-kadhi-kunala-kalalo-nahi-mandar-karande"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn purchase-btn hindvi-btn">
+
+                Hindvi Creations वर खरेदी
+
+              </a>
+
+            </div>
 
           </article>
 
+
           <!-- BOOK 3 -->
+
           <article class="book-card">
 
             <div class="book-cover">
+
               <img
                 src="./book-cyber.jpg.jpg"
                 alt="सायबर योद्धा"
                 loading="lazy"
               >
+
             </div>
 
             <h3>सायबर योद्धा</h3>
 
             <p
-              data-mr="सायबर सुरक्षा, सायबर गुन्हे आणि डिजिटल सुरक्षिततेविषयी मार्गदर्शन करणारे पुस्तक."
-              data-en="A book introducing cybersecurity, cybercrime awareness and digital safety.">
-              सायबर सुरक्षा, सायबर गुन्हे आणि डिजिटल सुरक्षिततेविषयी मार्गदर्शन करणारे पुस्तक.
+              data-mr="सायबर सुरक्षा, ऑनलाइन फसवणूक, डिजिटल सुरक्षितता आणि सायबर जागरूकतेविषयी पुस्तक."
+              data-en="A book introducing cybersecurity, online fraud awareness and digital safety.">
+
+              सायबर सुरक्षा, ऑनलाइन फसवणूक, डिजिटल सुरक्षितता आणि सायबर जागरूकतेविषयी पुस्तक.
+
             </p>
 
-            <a
-              href="https://pdfcart.in/p/pdf-105"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn book-btn">
-              पुस्तक खरेदी करा
-            </a>
+            <div class="purchase-buttons">
+
+              <a
+                href="https://pdfcart.in/p/pdf-105"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn purchase-btn">
+
+                PDFCart वर खरेदी
+
+              </a>
+
+              <a
+                href="https://hindavicreators.online/karandemandar180/product/sayabar-yoddha"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn purchase-btn hindvi-btn">
+
+                Hindvi Creations वर खरेदी
+
+              </a>
+
+            </div>
 
           </article>
 
         </div>
-      </div>
-    </section>
 
-    <!-- MARATHI LITERATURE -->
-    <section id="literature" class="section">
-      <div class="container">
 
-        <h2 class="section-title"
-            data-mr="मराठी साहित्य"
-            data-en="Marathi Literature">
-          मराठी साहित्य
-        </h2>
+        <div class="publishing-note">
 
-        <div class="content-grid">
-
-          <div class="content-card">
-            <h3 data-mr="कविता" data-en="Poetry">कविता</h3>
-            <p
-              data-mr="मनातील भावना, प्रेम, नाती, संघर्ष आणि जीवनानुभव यांना शब्दरूप."
-              data-en="Expressions of emotions, love, relationships, struggles and life experiences.">
-              मनातील भावना, प्रेम, नाती, संघर्ष आणि जीवनानुभव यांना शब्दरूप.
-            </p>
-          </div>
-
-          <div class="content-card">
-            <h3 data-mr="लेख" data-en="Articles">लेख</h3>
-            <p
-              data-mr="समाज, जीवन, अनुभव आणि विचारविश्वावर आधारित लेख."
-              data-en="Articles based on society, life, experiences and ideas.">
-              समाज, जीवन, अनुभव आणि विचारविश्वावर आधारित लेख.
-            </p>
-          </div>
-
-          <div class="content-card">
-            <h3 data-mr="पुस्तक लेखन" data-en="Books">पुस्तक लेखन</h3>
-            <p
-              data-mr="वाचकांशी संवाद साधणारे साहित्य आणि पुस्तक निर्मिती."
-              data-en="Literature and books created to connect with readers.">
-              वाचकांशी संवाद साधणारे साहित्य आणि पुस्तक निर्मिती.
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- CYBER WRITING -->
-    <section id="cyber" class="section cyber-section">
-      <div class="container">
-
-        <h2 class="section-title"
-            data-mr="सायबर सुरक्षा लेखन"
-            data-en="Cybersecurity Writing">
-          सायबर सुरक्षा लेखन
-        </h2>
-
-        <p class="section-intro"
-           data-mr="डिजिटल जगात सुरक्षित आणि जागरूक राहण्यासाठी माहितीपूर्ण लेखन."
-           data-en="Informative writing to help people stay safe and aware in the digital world.">
-          डिजिटल जगात सुरक्षित आणि जागरूक राहण्यासाठी माहितीपूर्ण लेखन.
-        </p>
-
-        <div class="content-grid">
-
-          <div class="content-card">
-            <h3>Cyber Security</h3>
-            <p
-              data-mr="ऑनलाइन फसवणूक, फिशिंग, पासवर्ड सुरक्षा आणि डिजिटल जागरूकता."
-              data-en="Online fraud, phishing, password security and digital awareness.">
-              ऑनलाइन फसवणूक, फिशिंग, पासवर्ड सुरक्षा आणि डिजिटल जागरूकता.
-            </p>
-          </div>
-
-          <div class="content-card">
-            <h3>Digital Forensics</h3>
-            <p
-              data-mr="डिजिटल पुरावे, पुराव्यांची अखंडता आणि Chain of Custody."
-              data-en="Digital evidence, evidence integrity and chain of custody.">
-              डिजिटल पुरावे, पुराव्यांची अखंडता आणि Chain of Custody.
-            </p>
-          </div>
-
-          <div class="content-card">
-            <h3>Cyber Law</h3>
-            <p
-              data-mr="सायबर कायदे, IT Act आणि डिजिटल अधिकारांविषयी माहिती."
-              data-en="Information about cyber laws, the IT Act and digital rights.">
-              सायबर कायदे, IT Act आणि डिजिटल अधिकारांविषयी माहिती.
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- BLOG -->
-    <section id="blog" class="section">
-      <div class="container">
-
-        <h2 class="section-title"
-            data-mr="ब्लॉग आणि नवीन लेख"
-            data-en="Blog & Latest Articles">
-          ब्लॉग आणि नवीन लेख
-        </h2>
-
-        <div class="blog-card">
-          <h3
-            data-mr="लवकरच नवीन लेख प्रकाशित होतील"
-            data-en="New articles coming soon">
-            लवकरच नवीन लेख प्रकाशित होतील
-          </h3>
-
-          <p
-            data-mr="मराठी साहित्य, सायबर सुरक्षा, डिजिटल फॉरेन्सिक्स आणि सायबर कायदा या विषयांवरील लेख येथे वाचता येतील."
-            data-en="Articles on Marathi literature, cybersecurity, digital forensics and cyber law will be published here.">
-            मराठी साहित्य, सायबर सुरक्षा, डिजिटल फॉरेन्सिक्स आणि सायबर कायदा या विषयांवरील लेख येथे वाचता येतील.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section contact-section">
-      <div class="container">
-
-        <h2 class="section-title"
-            data-mr="संपर्क"
-            data-en="Contact">
-          संपर्क
-        </h2>
-
-        <div class="contact-card">
-
-          <h3>मंदार लेखणी | Mandar Lekhani</h3>
-
-          <p
-            data-mr="वाचक, लेखक आणि साहित्यप्रेमींनी संपर्क साधावा."
-            data-en="Readers, writers and literature enthusiasts are welcome to connect.">
-            वाचक, लेखक आणि साहित्यप्रेमींनी संपर्क साधावा.
+          <p>
+            <strong>Publishing Platforms</strong>
           </p>
 
           <p>
-            Email:
-            <a href="mailto:cyberbridgedigital@gmail.com">
-              cyberbridgedigital@gmail.com
-            </a>
+            PDFCart | Hindvi Creations
           </p>
 
         </div>
+
       </div>
+
     </section>
+
+
+    <!-- MARATHI LITERATURE -->
+
+    <section id="literature" class="section light-section">
+
+      <div class="container">
+
+        <h2 class="section-title"
+          data-mr="मराठी साहित्य आणि लेखन"
+          data-en="Marathi Literature & Writing">
+
+          मराठी साहित्य आणि लेखन
+
+        </h2>
+
+
+        <div class="content-grid">
+
+          <div class="content-card">
+
+            <div class="card-icon">✍️</div>
+
+            <h3 data-mr="कविता" data-en="Poetry">
+              कविता
+            </h3>
+
+            <p
+              data-mr="प्रेम, भावना, नाती, आयुष्य, संघर्ष आणि मनातील विचार यांना शब्दरूप देणाऱ्या कविता."
+              data-en="Poetry expressing love, emotions, relationships, life, struggles and thoughts.">
+
+              प्रेम, भावना, नाती, आयुष्य, संघर्ष आणि मनातील विचार यांना शब्दरूप देणाऱ्या कविता.
+
+            </p>
+
+          </div>
+
+
+          <div class="content-card">
+
+            <div class="card-icon">📖</div>
+
+            <h3 data-mr="अनुभव लेखन" data-en="Personal Essays">
+              अनुभव लेखन
+            </h3>
+
+            <p
+              data-mr="जीवनातील अनुभव, सामाजिक विषय आणि वास्तवावर आधारित लेखन."
+              data-en="Writing based on life experiences, social issues and reality.">
+
+              जीवनातील अनुभव, सामाजिक विषय आणि वास्तवावर आधारित लेखन.
+
+            </p>
+
+          </div>
+
+
+          <div class="content-card">
+
+            <div class="card-icon">📚</div>
+
+            <h3 data-mr="पुस्तक लेखन" data-en="Book Writing">
+              पुस्तक लेखन
+            </h3>
+
+            <p
+              data-mr="साहित्य, कविता आणि ज्ञानविषयक पुस्तकांची निर्मिती."
+              data-en="Creating books on literature, poetry and knowledge.">
+
+              साहित्य, कविता आणि ज्ञानविषयक पुस्तकांची निर्मिती.
+
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CYBERSECURITY WRITING -->
+
+    <section id="cyber" class="section">
+
+      <div class="container">
+
+        <h2 class="section-title"
+          data-mr="सायबर सुरक्षा आणि तांत्रिक लेखन"
+          data-en="Cybersecurity & Technical Writing">
+
+          सायबर सुरक्षा आणि तांत्रिक लेखन
+
+        </h2>
+
+
+        <p class="section-intro"
+          data-mr="डिजिटल जगातील धोके समजून घेण्यासाठी आणि सुरक्षित राहण्यासाठी माहितीपूर्ण लेखन."
+          data-en="Informative writing to understand digital threats and stay safe online.">
+
+          डिजिटल जगातील धोके समजून घेण्यासाठी आणि सुरक्षित राहण्यासाठी माहितीपूर्ण लेखन.
+
+        </p>
+
+
+        <div class="content-grid">
+
+          <div class="content-card">
+
+            <div class="card-icon">🔐</div>
+
+            <h3>Cyber Security</h3>
+
+            <p
+              data-mr="Phishing, Online Fraud, Password Security, Social Engineering आणि Cyber Awareness."
+              data-en="Phishing, online fraud, password security, social engineering and cyber awareness.">
+
+              Phishing, Online Fraud, Password Security, Social Engineering आणि Cyber Awareness.
+
+            </p>
+
+          </div>
+
+
+          <div class="content-card">
+
+            <div class="card-icon">🔎</div>
+
+            <h3>Digital Forensics</h3>
+
+            <p
+              data-mr="Digital Evidence, Chain of Custody, Evidence Integrity आणि Forensic Investigation."
+              data-en="Digital evidence, chain of custody, evidence integrity and forensic investigation.">
+
+              Digital Evidence, Chain of Custody, Evidence Integrity आणि Forensic Investigation.
+
+            </p>
+
+          </div>
+
+
+          <div class="content-card">
+
+            <div class="card-icon">⚖️</div>
+
+            <h3>Cyber Law</h3>
+
+            <p
+              data-mr="IT Act, डिजिटल पुरावे, डेटा संरक्षण, गोपनीयता आणि सायबर कायद्यांविषयी माहिती."
+              data-en="Information about the IT Act, digital evidence, data protection, privacy and cyber law.">
+
+              IT Act, डिजिटल पुरावे, डेटा संरक्षण, गोपनीयता आणि सायबर कायद्यांविषयी माहिती.
+
+            </p>
+
+          </div>
+
+
+          <div class="content-card">
+
+            <div class="card-icon">🏛️</div>
+
+            <h3>E-Governance</h3>
+
+            <p
+              data-mr="शासकीय डिजिटल प्रणाली, प्रक्रिया व्यवस्थापन आणि डिजिटल परिवर्तन."
+              data-en="Government digital systems, process management and digital transformation.">
+
+              शासकीय डिजिटल प्रणाली, प्रक्रिया व्यवस्थापन आणि डिजिटल परिवर्तन.
+
+            </p>
+
+          </div>
+
+
+          <div class="content-card">
+
+            <div class="card-icon">⛓️</div>
+
+            <h3>Blockchain & AI</h3>
+
+            <p
+              data-mr="Blockchain, Artificial Intelligence आणि डिजिटल अभिलेखांच्या अखंडतेवरील लेखन."
+              data-en="Writing on blockchain, artificial intelligence and integrity of digital records.">
+
+              Blockchain, Artificial Intelligence आणि डिजिटल अभिलेखांच्या अखंडतेवरील लेखन.
+
+            </p>
+
+          </div>
+
+
+          <div class="content-card">
+
+            <div class="card-icon">🛡️</div>
+
+            <h3>Data Protection</h3>
+
+            <p
+              data-mr="Privacy Awareness, Data Protection आणि डिजिटल जबाबदारी."
+              data-en="Privacy awareness, data protection and digital responsibility.">
+
+              Privacy Awareness, Data Protection आणि डिजिटल जबाबदारी.
+
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONTENT WRITING SERVICES -->
+
+    <section id="services" class="section light-section">
+
+      <div class="container">
+
+        <h2 class="section-title"
+          data-mr="Content Writing Services"
+          data-en="Content Writing Services">
+
+          Content Writing Services
+
+        </h2>
+
+        <p class="section-intro"
+          data-mr="विविध विषयांसाठी माहितीपूर्ण, संशोधनाधारित आणि वाचकाभिमुख लेखन सेवा."
+          data-en="Informative, research-oriented and reader-focused writing services across multiple subjects.">
+
+          विविध विषयांसाठी माहितीपूर्ण, संशोधनाधारित आणि वाचकाभिमुख लेखन सेवा.
+
+        </p>
+
+
+        <div class="content-grid">
+
+          <div class="content-card">
+
+            <div class="card-icon">📝</div>
+
+            <h3>Article Writing</h3>
+
+            <p
+              data-mr="मराठी आणि इंग्रजी भाषेत माहितीपूर्ण लेख, विषयाधारित लेखन आणि ब्लॉग."
+              data-en="Informative articles, topic-based writing and blogs in Marathi and English.">
+
+              मराठी आणि इंग्रजी भाषेत माहितीपूर्ण लेख, विषयाधारित लेखन आणि ब्लॉग.
+
+            </p>
+
+          </div>
+
+
+          <div class="content-card">
+
+            <div class="card-icon">💻</div>
+
+            <h3>Technical Content</h3>
+
+            <p
+              data-mr="ERP, Software, IT, Cybersecurity आणि तंत्रज्ञानविषयक लेखन."
+              data-en="Writing about ERP, software, IT, cybersecurity and technology.">
+
+              ERP, Software, IT, Cybersecurity आणि तंत्रज्ञानविषयक लेखन.
+
+            </p>
+
+          </div>
+
+
+          <div class="content-card">
+
+            <div class="card-icon">📢</div>
+
+            <h3>Website & Business Content</h3>
+
+            <p
+              data-mr="वेबसाइट मजकूर, व्यवसाय परिचय, सेवा वर्णन आणि डिजिटल माहिती."
+              data-en="Website content, business profiles, service descriptions and digital information.">
+
+              वेबसाइट मजकूर, व्यवसाय परिचय, सेवा वर्णन आणि डिजिटल माहिती.
+
+            </p>
+
+          </div>
+
+
+          <div class="content-card">
+
+            <div class="card-icon">⚖️</div>
+
+            <h3>Cyber Law Content</h3>
+
+            <p
+              data-mr="सायबर कायदा, डिजिटल पुरावे आणि कायदेविषयक जागरूकता लेखन."
+              data-en="Cyber law, digital evidence and legal awareness content.">
+
+              सायबर कायदा, डिजिटल पुरावे आणि कायदेविषयक जागरूकता लेखन.
+
+            </p>
+
+          </div>
+
+
+          <div class="content-card">
+
+            <div class="card-icon">📱</div>
+
+            <h3>Social Media Content</h3>
+
+            <p
+              data-mr="LinkedIn पोस्ट, व्यवसाय जाहिरात, माहितीपर पोस्ट आणि सोशल मीडिया मजकूर."
+              data-en="LinkedIn posts, business promotions, informative posts and social media content.">
+
+              LinkedIn पोस्ट, व्यवसाय जाहिरात, माहितीपर पोस्ट आणि सोशल मीडिया मजकूर.
+
+            </p>
+
+          </div>
+
+
+          <div class="content-card">
+
+            <div class="card-icon">📚</div>
+
+            <h3>Book & Editorial Support</h3>
+
+            <p
+              data-mr="पुस्तक लेखन नियोजन, लेख संपादन आणि साहित्यिक मजकूर."
+              data-en="Book writing planning, article editing and literary content.">
+
+              पुस्तक लेखन नियोजन, लेख संपादन आणि साहित्यिक मजकूर.
+
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="service-contact">
+
+          <h3
+            data-mr="लेखन सेवांसाठी संपर्क साधा"
+            data-en="Contact for Writing Services">
+
+            लेखन सेवांसाठी संपर्क साधा
+
+          </h3>
+
+          <a href="https://wa.me/918275593749"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn">
+
+            WhatsApp Enquiry
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- BLOG -->
+
+    <section id="blog" class="section">
+
+      <div class="container">
+
+        <h2 class="section-title"
+          data-mr="ब्लॉग आणि नवीन लेख"
+          data-en="Blog & Latest Articles">
+
+          ब्लॉग आणि नवीन लेख
+
+        </h2>
+
+        <div class="blog-grid">
+
+          <article class="blog-card">
+
+            <span class="blog-category">Marathi Literature</span>
+
+            <h3>कविता आणि मनातील भावना</h3>
+
+            <p>
+              साहित्य, कविता, नाती आणि जीवनानुभव यांवरील लेख येथे प्रकाशित होतील.
+            </p>
+
+          </article>
+
+
+          <article class="blog-card">
+
+            <span class="blog-category">Cyber Security</span>
+
+            <h3>सायबर सुरक्षितता आणि जागरूकता</h3>
+
+            <p>
+              ऑनलाइन फसवणूक, Phishing आणि डिजिटल सुरक्षिततेवरील लेख.
+            </p>
+
+          </article>
+
+
+          <article class="blog-card">
+
+            <span class="blog-category">Cyber Law</span>
+
+            <h3>डिजिटल पुरावे आणि सायबर कायदा</h3>
+
+            <p>
+              डिजिटल पुराव्यांचे महत्त्व, Chain of Custody आणि कायदेविषयक माहिती.
+            </p>
+
+          </article>
+
+        </div>
+
+        <p class="blog-note">
+          नवीन लेख लवकरच प्रकाशित केले जातील.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact" class="section light-section">
+
+      <div class="container">
+
+        <h2 class="section-title"
+          data-mr="संपर्क साधा"
+          data-en="Get in Touch">
+
+          संपर्क साधा
+
+        </h2>
+
+
+        <div class="contact-card">
+
+          <h3>मंदार कारंडे | मंदार लेखणी</h3>
+
+          <p
+            data-mr="लेखन, साहित्य, Content Writing आणि व्यावसायिक सहकार्यासाठी संपर्क साधा."
+            data-en="Connect for writing, literature, content writing and professional collaboration.">
+
+            लेखन, साहित्य, Content Writing आणि व्यावसायिक सहकार्यासाठी संपर्क साधा.
+
+          </p>
+
+
+          <div class="contact-detail">
+
+            <span>📱 Mobile</span>
+
+            <a href="tel:+918275593749">
+              8275593749
+            </a>
+
+          </div>
+
+
+          <div class="contact-detail">
+
+            <span>WhatsApp</span>
+
+            <a
+              href="https://wa.me/918275593749"
+              target="_blank"
+              rel="noopener noreferrer">
+
+              Chat on WhatsApp
+
+            </a>
+
+          </div>
+
+
+          <div class="contact-detail">
+
+            <span>✉️ Email</span>
+
+            <a href="mailto:cyberbridgedigital@gmail.com">
+              cyberbridgedigital@gmail.com
+            </a>
+
+          </div>
+
+
+          <div class="contact-buttons">
+
+            <a href="tel:+918275593749" class="btn">
+              Call Now
+            </a>
+
+            <a
+              href="https://wa.me/918275593749"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn whatsapp-btn">
+
+              WhatsApp
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
 
   </main>
 
+
   <!-- FOOTER -->
+
   <footer class="footer">
+
     <div class="container">
 
       <img
@@ -390,20 +1092,49 @@
         class="footer-logo"
       >
 
-      <p>© <span id="year"></span> Mandar Lekhani</p>
-
-      <p
-        data-mr="सर्व हक्क लेखकाकडे राखीव."
-        data-en="All rights reserved.">
-        सर्व हक्क लेखकाकडे राखीव.
-      </p>
+      <h3>मंदार लेखणी</h3>
 
       <p>शब्दांतून मनाचा प्रवास...</p>
 
+      <div class="footer-links">
+
+        <a href="#about">About</a>
+        <a href="#books">Books</a>
+        <a href="#cyber">Cyber Writing</a>
+        <a href="#services">Content Writing</a>
+        <a href="#contact">Contact</a>
+
+      </div>
+
+      <p>
+        Publishing Platforms: PDFCart | Hindvi Creations
+      </p>
+
+      <p>
+        © <span id="year"></span> Mandar Lekhani. All Rights Reserved.
+      </p>
+
     </div>
+
   </footer>
+
+
+  <!-- FLOATING WHATSAPP -->
+
+  <a
+    href="https://wa.me/918275593749"
+    class="floating-whatsapp"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contact on WhatsApp">
+
+    WA
+
+  </a>
+
 
   <script src="./script.js"></script>
 
 </body>
+
 </html>
